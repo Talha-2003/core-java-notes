@@ -85,5 +85,138 @@ public class A {
   }
 }
 
+new keyword:
+##############
+
+-> Using new keyword we send request to class to create object
+-> Once object is created new keyword will get objects's address and stores that in a reference variable
+
+Syntax to create object:
+-------------------------
+ClassName variableName = new ClassName();
+
+Note:
+-----------------------------------
+Two types of camel casing:
+
+a. Upper Case Camel Casing: Used for naming class, interface, abtract class etc
+b. Lower Case Camel Casing: Used for creating method, variables etc
+_______________________________________________________________________
+
+Non-static Variable/ Instance Variable /Object Variables
+#####################
+1. We should create non static variable inside class outside method without using static keyword
+2. Without creating object we cannot access non static variable
+Example 1:
+-----------
+public class A {
+	int x = 10;
+	public static void main(String[] args) {
+		A a1 = new A();
+		System.out.println(a1.x);
+	}
+}
+Output: 10
+--------------------------------------------------------------------------------
+Example 2:
+----------
+
+public class A {
+	int x = 10;
+	int y = 20;
+	public static void main(String[] args) {
+		A a1 = new A();
+		System.out.println(a1.x);
+		System.out.println(a1.y);
+	}
+}
+Output:
+10
+20
+
+-----------------------------------------------------------------
+3. Every time we create object non-static variable copy is loaded to that object
+4. Copy of variable in these object's are different. That is if you change the value of variable in one object, those changes cannot be seen in another object
+
+Example:
+---------
+
+public class A {
+	int x = 10;
+	public static void main(String[] args) {
+		A a1 = new A();
+		System.out.println(a1.x);//10
+		a1.x = 20;
+		System.out.println(a1.x);//20
+		
+		A a2 = new A();
+		System.out.println(a2.x);//10
+	}
+}
+Output
+10
+20
+10
 
 
+5. It is not mandatory to initialize non-static variable. Depending on data type automatically default value will get stored in it.
+Example:
+---------
+public class A {
+	int x ;
+	public static void main(String[] args) {
+		A a1 = new A();
+		System.out.println(a1.x);
+		
+	}
+}
+
+Ouput: 0
+-----------------------------------------------------------
+
+Static variables:
+#################
+
+1. We should create static variables inside class but outsiude method with static keyword
+2. To access static variable we will use below Options
+a. ClassName.variableName
+b. variableName (Contraints)
+c. objectAddress.variableName (Wrong Appraoch but will work)
+
+Example:
+---------------
+public class A {
+	static int x=10 ;
+	public static void main(String[] args) {
+		System.out.println(A.x);
+		System.out.println(x);
+		
+		//Wrong
+		A a1 = new A();
+		System.out.println(a1.x);//A.x
+	}
+	
+}
+Output
+10
+10
+10
+--------------------------------------------------------------------------
+Example:
+--------
+public class A {
+	static int x=10 ;
+	public static void main(String[] args) {
+		System.out.println(A.x);//10
+		A.x=20;
+		System.out.println(A.x);
+		System.out.println(A.x);
+		A.x = 30;
+		System.out.println(A.x);
+		System.out.println(A.x);
+		
+		
+	}
+	
+}
+-----------------------------------------------------------------------
