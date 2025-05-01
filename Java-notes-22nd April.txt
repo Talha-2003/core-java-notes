@@ -220,3 +220,213 @@ public class A {
 	
 }
 -----------------------------------------------------------------------
+
+Types of variables in java
+############################
+
+1. Local Variable
+######################
+a. Local vaiables should be created inside methods
+b. We should use local variable within the created method only
+Example 1:
+---------
+public class A {
+	
+	public static void main(String[] args) {
+		int x = 100;//Created
+		System.out.println(x);//Using
+	}
+	
+}
+Output: 100
+
+Example 2:
+-----------
+public class A {
+	public static void main(String[] args) {
+		int x = 100;//Created
+		System.out.println(x);//Using
+		A a1 = new A();
+		a1.test();
+	}
+	public void test() {
+		System.out.println(x);//Error
+	}
+}
+Output: Error
+
+Example 3:
+----------
+public class A {
+	public static void main(String[] args) {
+		A a1 = new A();
+		a1.test();
+	}
+		
+	public void test() {
+		int x = 100;//Created
+		System.out.println(x);//Correct
+	}
+}
+
+Example 4:
+------------
+public class A {
+	public static void main(String[] args) {
+		A a1 = new A();
+		a1.test();
+		System.out.println(x);//Error
+	}
+		
+	public void test() {
+		int x = 100;//Created
+		System.out.println(x);//Correct
+	}
+}
+
+c. Without initializing if you are using local variable then you will get an error
+Example 5:
+----------
+public class A {
+	public static void main(String[] args) {
+		int x;
+		System.out.println(x);//Error
+	}
+}
+
+Note: Static variable has global access
+Example:
+---------
+public class A {
+	static int y = 10;
+	public static void main(String[] args) {
+		System.out.println(A.y);
+		int x=10;
+		System.out.println(x);
+	}
+	public void test() {
+		System.out.println(A.y);
+		System.out.println(x);
+	}
+}
+
+2. Static variable
+3. Non-static variable / instance variable
+
+4. Reference Variable
+#####################
+a. Can hold either Object address or null value
+Example 1:
+----------
+public class A {
+	
+	public static void main(String[] args) {
+		A a1 = null;
+		A a2 = new A();
+	}
+	
+}
+
+b. Datatype of reference variable is class name
+Example 2: A x;
+
+Example 3:
+In the below example "a1" is created inside main and hence it is a local variable. We cannot access that outside main method
+
+public class A {
+	
+	public static void main(String[] args) {
+		A a1 = new A();
+		System.out.println(a1);
+	}
+	public void test() {
+		System.out.println(a1);//Error
+	}
+	
+}
+
+Example 4:
+Error because "a1" is local variable and not initialized
+
+public class A {
+	
+	public static void main(String[] args) {
+		A a1;
+		System.out.println(a1);//Error
+	}
+	
+	
+}
+Example 5: If we donot initialize static reference variable then by default null value will get stored in it
+
+Example:
+public class A {
+	static A a1;
+	public static void main(String[] args) {
+		System.out.println(a1);
+	}
+	
+	
+}
+
+Example:
+public class A {
+	static A a1;
+	public static void main(String[] args) {
+		System.out.println(a1);
+		a1 = new A();
+		a1.test();
+	}
+	public void test() {
+		System.out.println(a1);
+	}
+	
+	
+}
+
+Note:
+Stack - > LIFO (Last In First Out)
+Heap - > Objects are created inside heap memory
+Garbage Collector - > Manages Memory to avoid overflow of memory by constantly removing objects that is not is use from heap memory
+
+Heap and stack memory
+#####################
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
