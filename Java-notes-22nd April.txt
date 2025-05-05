@@ -3,7 +3,7 @@ Core Java - Pankaj Sir Academy
 ###############################
 
 What is a class?
--> Class hels us to create object in java
+-> Class helps us to create object in java
 -> In java we use class keyword to create class.
 -> Keyword should be in lower case
 Example :
@@ -391,6 +391,182 @@ Garbage Collector - > Manages Memory to avoid overflow of memory by constantly r
 
 Heap and stack memory
 #####################
+
+
+###############
+methods in java
+###############
+1. void keyword: A void method cannot return any value
+
+Example 1:
+----------
+public class C {
+	public static void main(String[] args) {
+		
+	}
+	
+	public void test() {
+		return 100;//Error
+	}
+}
+
+Example :
+-----------
+public class C {
+	public static void main(String[] args) {
+		C c1 = new C();
+		int x = c1.test();
+		System.out.println(x);
+	}
+	
+	public int test() {
+		return 100;
+	}
+}
+Output: 100
+
+Example:
+----------
+public class C {
+	public static void main(String[] args) {
+		C c1 = new C();
+		String x = c1.test();
+		System.out.println(x);
+	}
+	
+	public String test() {
+		return "mike";
+	}
+}
+
+return keyword versus return "value"
+#####################################
+
+return keyword:
+-> A method has to be void
+-> It is optional
+-> it will return control to method calling statement
+
+Example:
+-------
+
+public class C {
+	public static void main(String[] args) {
+	  C c1 = new C();
+	  c1.test();
+	}
+	
+	public void test() {
+		System.out.println(100);
+		return;
+	}
+}
+Output: 100
+
+Note: if we write code after return keyword, then that code will 100% not run. This error is called as unreachable code error
+
+Example:
+public class C {
+	public static void main(String[] args) {
+	  C c1 = new C();
+	  c1.test();
+	}
+	
+	public void test() {
+		System.out.println(100);
+		return;
+		System.out.println(200);
+	}
+}
+Output: unreachable code error
+
+return "value"
+---------------
+-> The method has to be not a void method
+-> It is mandatory to use return "value" statement inside not a void method
+-> It will return control and value to method calling statement
+
+Example:
+public class C {
+	public static void main(String[] args) {
+	 
+	}
+	
+	public int test() {//Error
+		
+	}
+}
+Output: Error because return "value" statement is missing inside test method
+
+
+Example:
+public class C {
+	public static void main(String[] args) {
+	 
+	}
+	
+	public int test() {
+		return 100;
+		System.out.println(300);
+	}
+}
+Output: Unreachable code error
+
+Method Arguments
+##################
+-> Using method arguments we supply values to method when we are calling it
+-> The method argument is a local variable
+-> arguments inside the method values that you supply to the method should match
+
+Example:
+-------
+public class C {
+	public static void main(String[] args) {
+	  C c1 = new C();
+	  c1.test(100);
+	}
+	
+	public void test(int x) {
+		System.out.println(x);
+	}
+}
+
+Example:
+--------
+public class C {
+	public static void main(String[] args) {
+	  C c1 = new C();
+	  c1.test(100,"mike");
+	}
+	
+	public void test(int x,String y) {
+		System.out.println(x);
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
