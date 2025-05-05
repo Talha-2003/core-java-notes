@@ -544,8 +544,42 @@ public class C {
 	}
 }
 
+Note: When method argument type is Object, then we can supply any kind of value to it
 
+Example:
+--------
+public class C {
+	public static void main(String[] args) {
+	  C c1 = new C();
+	  c1.test('a');
+	}
+	
+	public void test(Object x) {
+		System.out.println(x);
+	}
+}
 
+Example:
+public class C {
+	public static void main(String[] args) {
+	  C c1 = new C();
+	  c1.test("mike",100,200,300,400);
+	}
+	
+	public void test(String y, int... x) {
+		System.out.println(x[0]);
+		System.out.println(x[1]);
+		System.out.println(x[2]);
+		System.out.println(x[3]);
+		System.out.println(y);
+	}
+}
+Output:
+100
+200
+300
+400
+mike
 
 
 
