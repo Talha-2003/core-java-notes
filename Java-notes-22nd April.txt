@@ -581,7 +581,163 @@ Output:
 400
 mike
 
+Static Methods
+###############
 
+Example 1:
+public class C {
+	public static void main(String[] args) {
+	    C.test();
+	}
+	public static void test() {
+		System.out.println(599);
+	}
+	
+}
+
+Example 2:
+---------
+public class C {
+	public static void main(String[] args) {
+	   int x =  C.test();
+	   System.out.println(x);
+	}
+	public static int test() {
+		return 100;
+	}
+	
+}
+
+Example 3:
+-----------
+public class C {
+	public static void main(String[] args) {
+	   int x =  C.test(100,200);
+	   System.out.println(x);
+	}
+	public static int test(int a, int b) {
+		return a+b;
+	}
+	
+}
+Example 4:
+----------
+public class C {
+	public static void main(String[] args) {
+	   C.test();
+	   C.test();
+	   C.test();
+	}
+	public static void test() {
+		System.out.println(500);
+	}
+	
+}
+
+Datatypes in java
+##################
+Storing integer Values:
+------------------------------------
+1. byte - 1 byte - default value: 0
+2. short - 2 bytes - default value: 0
+3. int - 4 bytes - default value: 0
+4. long - 8 byte - default value: 0
+
+Floating Value
+-------------------------------
+1. float - 4 bytes - default value: 0.0
+2. double - 8 bytes - default value: 0.0
+
+boolean(true/false)
+----------------------------
+1. boolean - NA - default: false
+
+character values
+-----------------------
+1. char - 2 bytes - default: blank space
+
+String - Class
+---------------
+String - NA - dynamic - default: null
+
+Note:
+byte: -128 to 127 (8-bit signed two's complement integer)
+short: -32,768 to 32,767 (16-bit signed two's complement integer)
+int: -2,147,483,648 to 2,147,483,647 (32-bit signed two's complement integer)
+long: -9,223,372,036,854,775,808 to 9,223,372,036,854,775,807 (64-bit signed two's complement integer)
+float: Approximately ±3.40282347E+38F (32-bit IEEE 754 single-precision floating-point)
+double: Approximately ±1.79769313486231570E+308 (64-bit IEEE 754 double-precision floating-point)
+char: 0 to 65,535 (16-bit unsigned Unicode character)
+boolean: true or false (size is not precisely defined, often considered 1 bit)
+
+Datatypes example:
+---------------------
+public class C {
+	static byte x1 ;
+	static short x2 ;
+	static int x3 = 23_567 ;
+	static long x4=9632629033L ;
+	static float x5=10.3F ;
+	static double x6 ;
+	static char x7 ;
+	static boolean x8 ;
+	static String x9;
+	
+	public static void main(String[] args) {
+		System.out.println(x1);
+		System.out.println(x2);
+		System.out.println(x3);
+		System.out.println(x4);
+		System.out.println(x5);
+		System.out.println(x6);
+		System.out.println(x7);
+		System.out.println(x8);
+		System.out.println(x9);
+	}
+	
+}
+
+New type introduced in java version 10
+---------------------------------------
+var type
+#########
+-> This was introduced in java version 10
+-> It gives dynamic datatype concept. Depending on the value stored inside variable, dataype is allocated to it internally
+
+Example:
+public class C {
+	
+	public static void main(String[] args) {
+		var x1 =100;
+		var x2 =100.3;
+		var x3 ='a';
+		var x4 ="mike";
+		var x5 =new C();
+		System.out.println(x1);
+		System.out.println(x2);
+		System.out.println(x3);
+		System.out.println(x4);
+		System.out.println(x5);
+	}
+	
+}
+-> var type can only be local variable
+-> It cannot be static / non-static variable
+-> It cannot be method argument
+-> It cannot be method return type
+Example:
+--------
+public class C {
+	var x1;//Error
+	static var x2;//Error
+	public static void main(String[] args) {
+		var x5 = 100;//Correct
+	}
+	public var test(var x3) {//Error
+		
+	}
+	
+}
 
 
 
