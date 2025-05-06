@@ -739,7 +739,93 @@ public class C {
 	
 }
 
+######################
+Constructors in java
+######################
 
+-> Should have same name as that of class
+-> It is always void by default
+Example 1:
+----------
+public class C {
+	C(){
+		return 100;//Error
+	}
+	public static void main(String[] args) {
+		C c1 = new C();
+	}
+	
+}
+-> To call a constructor we have to create object.
+
+Example 2:
+--------
+public class C {
+	C(){
+		System.out.println(100);
+	}
+	public static void main(String[] args) {
+		C c1 = new C();
+	}
+	
+}
+
+-> Whenever we creat object constructor is being called
+
+Example 3:
+---------
+public class C {
+	C(){
+		System.out.println(100);
+	}
+	public static void main(String[] args) {
+		C c1 = new C();
+		C c2 = new C();
+		C c3 = new C();
+	}
+	
+}
+Ouput:
+100
+100
+100
+
+-> If you mention return type for a constructor. Then it is treated as a method
+
+Example 4:
+----------
+public class C {
+	void C(){
+		System.out.println(100);
+	}
+	public static void main(String[] args) {
+		C c1 = new C();
+	}
+	
+}
+
+Ouput: No Output, because void C() is a method
+
+Example 5: 
+Note :
+-> Method name can be same as class name
+-> Variable name can be same as class name
+
+public class C {
+        int C = 1000;
+	void C(){
+		System.out.println(100);
+	}
+	public static void main(String[] args) {
+		C c1 = new C();
+		c1.C();
+		System.out.println(c1.C);
+	}
+
+}
+
+Example 6:
+----------
 
 
 
