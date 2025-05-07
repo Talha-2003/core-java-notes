@@ -824,14 +824,122 @@ public class C {
 
 }
 
-Example 6:
+Contructor Overloading:
+-------------------------
+Here we create more than one constructor in same class provided they have different number of arguments or different type of arguments
+
+Example:
+--------
+public class A {
+	A(){//NoofArgs=0
+		System.out.println("A");
+	}
+	A(int x){//NoofArgs=1
+		System.out.println(x);
+	}
+	A(int x,int y){//NoofArgs=2
+		System.out.println(x);
+		System.out.println(y);
+	}
+	public static void main(String[] args) {
+		A a1 = new A();
+		A a2  = new A(100);
+		A a3 = new A(200,300);
+	}
+}
+
+Example:
+--------------
+public class A {
+	A(int x){//noOfArgs=1, type=int
+		System.out.println(x);
+	}
+	A(float y){//noOfArgs=1, type=float
+		System.out.println(y);
+	}
+	public static void main(String[] args) {
+		A a1 = new A(100);
+		A a2 = new A(10.3F);
+	}
+}
+
+Example:
+---------
+public class A {
+	A(int x){//noOfArgs=1, type=int
+		System.out.println(x);
+	}
+	A(String x, int y){//noOfArgs=2, type=String, int
+		System.out.println(x);
+		System.out.println(y);
+	}
+	public static void main(String[] args) {
+		A a1 = new A("mike",100);
+		A a2 = new A(500);
+		
+	}
+}
+
+############
+this keyword
+#############
+-> this keyword is a special reference variable tha hold's object's address
+Example:
 ----------
+public class A {
+	public static void main(String[] args) {
+		A a1 = new A();
+		System.out.println(a1);
+		a1.test();
+	}
+	public void test() {
+		System.out.println(this);
+	}
+}
 
+-> Using this keyword we can access non-static members of the class
+Example:
+--------
 
+public class A {
+	int x = 10;
+	public static void main(String[] args) {
+		A a1 = new A();
+		System.out.println(a1.x);
+		a1.test();
+	}
+	public void test() {
+		System.out.println(this.x);
+	}
+}
 
-
-
-
+-> We cannot use this keyword inside "static method"
+public class A {
+	public static void main(String[] args) {
+		A a1 = new A();
+		System.out.println(this);//Error
+	}
+	public static void test() {
+		System.out.println(this);//Error
+	}
+}
+Example:
+-------
+public class A {
+	int x = 10;
+	int y = 10;
+	public static void main(String[] args) {
+		A a1 = new A();
+		a1.test();
+	}
+	public void test() {
+		System.out.println(this.x);
+		System.out.println(this.y);
+	}
+}
+#################################################
+Note: PeerUp App start Communication here......
+#################################################
 
 
 
