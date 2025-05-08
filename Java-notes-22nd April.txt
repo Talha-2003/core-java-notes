@@ -941,6 +941,161 @@ public class A {
 Note: PeerUp App start Communication here......
 #################################################
 
+-> this keyword hold's current object address that is executing
+
+Example:
+--------
+public class A {
+	public static void main(String[] args) {
+		A a1 = new A();
+		a1.test();
+		A a2 = new A();
+		a2.test();
+		a1.test();
+		
+	}
+	public void test() {
+		System.out.println(this);
+	}
+}
+
+this()- This syntax is used to call constructor
+--------------------------------------------
+-> Using this() keyword we can call a constructor
+
+Example:
+-------
+public class A {
+	A(){
+		System.out.println("A");
+	}
+	A(int x){
+		this();
+	}
+	public static void main(String[] args) {
+	   A a1 = new A(100);
+	}
+	
+}
+
+-> While calling a constructor using this() keyword, ensure calling is done from anothe constructor
+
+Example:
+--------
+public class A {
+	A(){
+		System.out.println("A");
+	}
+	A(int x){
+		this();
+	}
+	public static void main(String[] args) {
+	   A a1 = new A(100);
+	}
+	public void test() {
+		this();//Error, we cannot call constructor from method
+	}
+	
+}
+
+Example:
+---------
+public class A {
+	A(int x){
+		System.out.println(x);
+	}
+	A(){
+		this(100);
+	}
+	public static void main(String[] args) {
+	   A a1 = new A();
+	}
+	
+	
+}
+
+-> While calling a constructor using this() keyword ensure it is always first statement inside another constructor
+
+Example:
+---------
+public class A {
+	A(int x){
+		System.out.println(x);
+	}
+	A(){
+		System.out.println(200);
+		this(100);//Error because it cannot be second statement while calling constructor
+		
+	}
+	public static void main(String[] args) {
+	   A a1 = new A();
+	}
+	
+	
+}
+
+Example:
+---------
+public class A {
+	int x;//-->0
+	A(int x){////Step 4-->x=100
+		this.x=x;//Step 5
+		System.out.println(this.x);//Step 6===>100
+	}
+	A(){//Step 2
+		this(100);//Step 3
+	}
+	public static void main(String[] args) {
+	   A a1 = new A();//Step 1
+	}
+	
+	
+}
+
+Constructor Chaining
+---------------------
+-> When we call one constructor from another constructor it will form chain like flow structure. This is called as constructor chaining
+-> This can be achieved by using this() keyword or Creating Object in another constructor
+
+Example 1:
+----------
+public class A {
+	A(){
+		System.out.println("A");
+	}
+	A(int x){
+		this();
+	}
+	public static void main(String[] args) {
+		A a1 = new A(100);
+	}
+}
+
+Example 2:
+-----------
+public class A {
+	A(){
+		System.out.println("A");
+	}
+	A(int x){
+		A a2 = new A();
+	}
+	public static void main(String[] args) {
+		A a1 = new A(100);
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
