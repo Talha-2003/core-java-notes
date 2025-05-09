@@ -1085,9 +1085,97 @@ public class A {
 	}
 }
 
+###############################
+Important Shortcuts in eclipse
+################################
+1. Ctrl + Space
+⚡ Content Assist — suggests code completions.
 
+Example: 
+a. syso  (do control+ space bar)
+b. main (do control+ space bar)
 
+2. Ctrl + 1
+💡 Quick fix — suggests solutions for errors or warnings.
 
+Example: String x = 100; (Press control + 1 to get solutions to fix problem) 
+
+3. Ctrl + O
+🧭 Quick outline — shows methods/fields of the current class.
+
+Example:
+public class Animal {
+
+    private String name;
+    private int age;
+   
+    public Animal(String name, int age) {
+        this.name = name;
+        this.age = age;
+    }
+
+    public void eat() {
+        System.out.println(name + " is eating.");
+    }
+
+    public void sleep() {
+    	
+        System.out.println(name + " is sleeping.");
+    }
+
+    private void breathe() {
+    	System.out.println(name + " is breathing.");
+    }
+}
+
+-> in the above file when pressed Control + O we will get soo all  content of like like shown below:
+
+Animal 
+-> name
+-> age
+-> Animal(String name, int age)
+-> eat()
+-> sleep() etc.....
+
+4. F3
+🔄 Go to the declaration of a variable, method, or class.
+
+Example: 
+public class Animal {
+
+    private String name;// Will show this step, as variable is declared here
+    private int age;
+   
+    public Animal(String name, int age) {
+        this.name = name; // When placed cusor on this.name, and pressed f3
+        this.age = age;
+    }
+
+    public void eat() {
+        System.out.println(name + " is eating.");
+    }
+
+    public void sleep() {
+    	
+        System.out.println(name + " is sleeping.");
+    }
+
+    private void breathe() {
+    	System.out.println(name + " is breathing.");
+    }
+}
+
+5. Ctrl + .
+➡️ Jump to the next error or warning in the file.
+public class Dog {
+	
+	int x//This is your first error. When pressed control + .
+	
+	public static void main(String[] args) {
+		int y//It will take you to this error
+	}
+
+}
 
 
 
