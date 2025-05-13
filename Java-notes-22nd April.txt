@@ -1344,9 +1344,90 @@ public class Auth {
 	}
 }
 
+#######################################
+Object Oriented Programming -  Pillars
+########################################
 
+a. inheritance
+b. polymorphism
+c. encapsulation
+d. abstraction
 
+a. inheritance
+######################
+-> Here we inherit the members of parent class to child class so that we can re-use those members
+Example 1:
+---------
+package app_java_1;
+public class Animal {
+	public void eat() {
+		System.out.println("Eating");
+	}
+	public void sleep() {
+		System.out.println("sleeping");
+	}
+}
 
+package app_java_1;
+public class Dog extends Animal{
+	public static void main(String[] args) {
+		Dog d = new Dog();
+		d.eat();
+		d.sleep();
+	}
+}
+Output:
+------
+Eating
+sleeping
+
+Example 2:
+package app_java_1;
+public class Animal {
+	public void eat() {
+		System.out.println("Eating");
+	}
+	public void sleep() {
+		System.out.println("sleeping");
+	}
+}
+Animal.java
+
+package app_java_1;
+public class Dog extends Animal{
+	//eat(),sleep()--->Animal
+}
+Dog.java
+
+package app_java_1;
+public class Cat extends Animal{
+	//eat(),sleep()--->Animal
+}
+Cat.java
+
+package app_java_1;
+public class Cow extends Animal{
+	//eat(),sleep()--->Animal
+}
+Cow.java
+
+package app_java_1;
+public class Root {
+	public static void main(String[] args) {
+		Dog d = new Dog();
+		d.eat();
+		d.sleep();
+		System.out.println("_______");
+		Cat cat = new Cat();
+		cat.eat();
+		cat.sleep();
+		System.out.println("_______");
+		Cow cow = new Cow();
+		cow.eat();
+		cow.sleep();
+	}
+}
+Root.java
 
 
 
