@@ -1429,6 +1429,171 @@ public class Root {
 }
 Root.java
 
+Example 3: Multilevel inheritance
+-----------------------------------
+
+package app_java_1;
+public class A {
+	public void test1() {
+		System.out.println(1);
+	}
+}
+
+package app_java_1;
+//test1, test2
+public class B extends A{
+	public void test2() {
+		System.out.println(2);
+	}
+}
+package app_java_1;
+
+public class C extends B{
+	public static void main(String[] args) {
+		C c1 = new C();
+		c1.test1();
+		c1.test2();
+	}
+}
+output:
+1
+2
+------------------------------------------------------------------------------
+
+################################################################################################
+What is mulitlpe inheritance?
+Answer: When a child class has more than one parent class, it is called as mulitple inheritance
+#################################################################################################
+
+Note: Java classes does not support mulitple inheritance because of diamond problem
+diamond problem: Suppose we inherit a method from A->B->D  and Same method is inherited from A->C->D, then confusion from which parent class method is inherited to child class D. This is called as DIAMOND PROBLEM. Hence in java classes does not support multiple inheritance.
+
+Note: We can do mulitple inheritance on interface. But will explain this during interfaces concept
+
+Example 4:Mulitple inheritance error
+------------------------------------------
+package app_java_1;
+public class A {
+	
+}
+
+package app_java_1;
+public class B{
+	
+}
+package app_java_1;
+public class C extends A,B{//Error
+	
+}
+
+Example 4: Inheritance between classes present inside different packages
+----------------------------------------
+package p1;
+public class A {
+	public void test() {
+		System.out.println(1);
+	}
+}
+package p2;
+import p1.A;
+public class B extends A{
+	public static void main(String[] args) {
+		B b1 = new B();
+		b1.test();
+	}
+}
+
+Example on non sub class: When in your project we have two class and no inheritance is happening between them then it is called as non-sub class
+--------------------------------------------------------------------------------------------------------
+package p1;
+public class A {
+	public void test() {
+		System.out.println(1);
+	}
+}
+package p2;
+import p1.A;
+public class B {
+	public static void main(String[] args) {
+		A a1 = new A();
+		a1.test();
+	}
+}
+------------------------------------------------------------
+Output: 1
+
+###############################
+Access Specifiers in java
+###############################
+--------------------------------------------------------------------
+Questions:
+1. What happens when a variable is  private/default/protected/public
+2. What happens when a constructor is  private/default/protected/public
+3. What happens when a class is  private/default/protected/public
+4. What happens when a interface is  private/default/protected/public
+----------------------------------------------------------------------
+
+-> They define the visibility of variables, methods, class & interface.
+
+------------------------------------------------------------------------------
+a. private: When a variable / method is made private then we can access that in same class but not outside class
+----------------------------------------------------------------------------------
+Example 1:
+package p1;
+public class A {
+	private int x=10;
+	private void test() {
+		System.out.println(1);
+	}
+	public static void main(String[] args) {
+		A a1 = new A();
+		System.out.println(a1.x);
+		a1.test();
+	}
+}
+Output:
+10
+1
+
+Example 2:
+package p1;
+public class A {
+	private int x=10;
+	private void test() {
+		System.out.println(1);
+	}
+}
+package p1;
+public class B extends A{
+	public static void main(String[] args) {
+		B b1 = new B();
+		System.out.println(b1.x);//Error
+		b1.test();//Error
+	}
+}
+
+Example 3:
+package p1;
+public class A {
+	private int x=10;
+	private void test() {
+		System.out.println(1);
+	}
+	
+}
+package p1;
+
+public class B {
+	public static void main(String[] args) {
+		A a1 = new A();
+		System.out.println(a1.x);//Error
+		a1.test();//Error
+	}
+}
+
+
+
+
 
 
 
