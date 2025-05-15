@@ -1834,9 +1834,117 @@ public class C {
 		a1.test();//----> Error
 	}
 }
+------------------------------------------------------
 
+d. public: When we make variable/method public then we can access that in sam class/same package/different package
 
+Example 1:
+package p1;
+public class A {
+	public int x=10;
+	public void test() {
+		System.out.println(1);
+	}
+	public static void main(String[] args) {
+		A a1 = new A();
+		System.out.println(a1.x);
+		a1.test();
+	}
+}
+Ouput:
+10
+1
 
+Example 2:
+-----------
+package p1;
+public class A {
+	public int x=10;
+	public void test() {
+		System.out.println(1);
+	}
+	
+}
+package p1;
+public class B extends A{
+	public static void main(String[] args) {
+		B b1 = new B();
+		System.out.println(b1.x);
+		b1.test();
+	}
+}
+Ouput:
+10
+1
+
+Example 3:
+-------------------------------------------
+
+package p1;
+public class A {
+	public int x=10;
+	public void test() {
+		System.out.println(1);
+	}
+	
+}
+package p1;
+public class B {
+	public static void main(String[] args) {
+		A a1 = new A();
+		System.out.println(a1.x);
+		a1.test();
+	}
+}
+Output:
+10
+1
+
+Example 4:
+--------------
+package p1;
+public class A {
+	public int x=10;
+	public void test() {
+		System.out.println(1);
+	}
+	
+}
+package p2;
+import p1.A;
+public class C extends A {
+	public static void main(String[] args) {
+		C c1 = new C();
+		System.out.println(c1.x);
+		c1.test();
+	}
+}
+Output:
+10
+1
+
+Example 5:
+------------
+package p1;
+public class A {
+	public int x=10;
+	public void test() {
+		System.out.println(1);
+	}
+	
+}
+package p2;
+import p1.A;
+public class C {
+	public static void main(String[] args) {
+		A a1 = new A();
+		System.out.println(a1.x);
+		a1.test();
+	}
+}
+Output:
+10
+1
 
 
 
