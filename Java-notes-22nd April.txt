@@ -1591,8 +1591,249 @@ public class B {
 	}
 }
 
+Example 4:
+package p1;
+public class A {
+	private int x=10;
+	private void test() {
+		System.out.println(1);
+	}
+	
+}
+package p2;
+import p1.A;
+public class C extends A {
+	public static void main(String[] args) {
+		C c1 = new C();
+		System.out.println(c1.x);//-->Error
+		c1.test();//-->Error
+	}
+}
+Example 5:
+package p1;
+public class A {
+	private int x=10;
+	private void test() {
+		System.out.println(1);
+	}
+	
+}
+package p2;
+import p1.A;
+public class C  {
+	public static void main(String[] args) {
+		A a1 = new A();
+		System.out.println(a1.x);//-->Error
+		a1.test();//-->Error
+	}
+}
 
 
+------------------------------------------------------------------------
+b. default: A variable/method with default access specifier can work only inside same class or same package, but cannot be accessed in different package
+
+Example 1:
+------------
+
+package p1;
+public class A {
+	int x=10;
+	void test() {
+		System.out.println(1);
+	}
+	public static void main(String[] args) {
+		A a1 = new A();
+		System.out.println(a1.x);
+		a1.test();
+	}
+	
+}
+
+Example 2:
+---------------------------------------------
+package p1;
+public class A {
+	int x=10;
+	void test() {
+		System.out.println(1);
+	}
+	
+}
+package p1;
+public class B extends A{
+	public static void main(String[] args) {
+		B b1 = new B();
+		System.out.println(b1.x);
+		b1.test();
+	}
+}
+Output:
+10
+1
+-----------------------------------------------------------------------
+Example 3:
+------------
+package p1;
+public class A {
+	int x=10;
+	void test() {
+		System.out.println(1);
+	}
+	
+}
+package p1;
+public class B {
+	public static void main(String[] args) {
+		A a1 = new A();
+		System.out.println(a1.x);
+		a1.test();
+	}
+}
+-----------------------------------------------------------------
+Example 3:
+------------------------
+package p1;
+public class A {
+	int x=10;
+	void test() {
+		System.out.println(1);
+	}
+	
+}
+package p2;
+import p1.A;
+public class C  extends A{
+	public static void main(String[] args) {
+		C c1 = new C();
+		System.out.println(c1.x);//-->Error
+		c1.test();//-->Error
+	}
+}
+--------------------------------------------------------
+Example 5:
+----------------
+package p1;
+public class A {
+	int x=10;
+	void test() {
+		System.out.println(1);
+	}
+	
+}
+package p2;
+import p1.A;
+public class C {
+	public static void main(String[] args) {
+		A a1 = new A();
+		System.out.println(a1.x);//--->Error
+		a1.test();//--->Error
+	}
+}
+-------------------------------------------
+
+c. protected: We can access variables/methods in same class/same package and inside different package only when inheritance is done
+
+Example 1:
+-------------
+package p1;
+public class A {
+	protected int x=10;
+	protected void test() {
+		System.out.println(1);
+	}
+	public static void main(String[] args) {
+		A a1 = new A();
+		System.out.println(a1.x);
+		a1.test();
+	}
+	
+}
+Ouput:
+10
+1
+
+Example 2:
+------------------
+package p1;
+public class A {
+	protected int x=10;
+	protected void test() {
+		System.out.println(1);
+	}
+}
+package p1;
+public class B extends A{
+	public static void main(String[] args) {
+		B b1 = new B();
+		System.out.println(b1.x);
+		b1.test();
+	}
+}
+Output:
+10
+1
+
+Example 3:
+----------
+package p1;
+public class A {
+	protected int x=10;
+	protected void test() {
+		System.out.println(1);
+	}
+}
+package p1;
+public class B {
+	public static void main(String[] args) {
+		A a1 = new A();
+		System.out.println(a1.x);
+		a1.test();
+	}
+}
+Ouput:
+10
+1
+
+Example 4: 
+-----------
+package p1;
+public class A {
+	protected int x=10;
+	protected void test() {
+		System.out.println(1);
+	}
+}
+package p2;
+import p1.A;
+public class C extends A{
+	public static void main(String[] args) {
+		C c1 = new C();
+		System.out.println(c1.x);
+		c1.test();
+	}
+}
+Ouput:
+10
+1
+
+Example 5:
+--------------
+package p1;
+public class A {
+	protected int x=10;
+	protected void test() {
+		System.out.println(1);
+	}
+}
+package p2;
+import p1.A;
+public class C {
+	public static void main(String[] args) {
+		A a1 = new A();
+		System.out.println(a1.x);//----> Error
+		a1.test();//----> Error
+	}
+}
 
 
 
