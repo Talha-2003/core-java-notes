@@ -1671,7 +1671,7 @@ Output:
 10
 1
 -----------------------------------------------------------------------
-Example 3:
+Example 4:
 ------------
 package p1;
 public class A {
@@ -1690,7 +1690,7 @@ public class B {
 	}
 }
 -----------------------------------------------------------------
-Example 3:
+Example 5:
 ------------------------
 package p1;
 public class A {
@@ -1710,7 +1710,7 @@ public class C  extends A{
 	}
 }
 --------------------------------------------------------
-Example 5:
+Example 6:
 ----------------
 package p1;
 public class A {
@@ -2058,15 +2058,213 @@ public class C extends A{//-->Error
 
 e. protected Constructor
 --------------------------
--> 
+-> If a constructor is made protected then its object can be created in same class/same package but not outside the package 
 
+Example 1:
+---------
+package p1;
+public class A {
+	protected A() {
+		
+	}
+	public static void main(String[] args) {
+		A a1 = new A();
+	}
+}
+package p1;
+public class B  {
+	public static void main(String[] args) {
+		A a1 = new A();
+	}
+}
+package p2;
+import p1.A;
+public class C {
+	public static void main(String[] args) {
+		A a1 = new A();//-->Error
+	}
+}
 
+-> When a constructor is made protected then inheritance of that class is  allowed in same package / outside the package (both)
+(Note: Construct re not inherit)
 
+Example 2:
+----------
+package p1;
+public class A {
+	protected A() {
+		
+	}
+	
+}
+package p1;
+public class B extends A {
+	
+}
+package p2;
+import p1.A;
+public class C extends A {
+	
+}
 
+e. public Constructor
+------------------------
+-> If a constructor is made public then its object can be created in same class/same package and outside the package also
 
+Example 1:
+---------
+package p1;
+public class A {
+	public A() {
+		
+	}
+	public static void main(String[] args) {
+		 A a1 = new A();
+	}
+}
+package p1;
+public class B  {
+	public static void main(String[] args) {
+		 A a1 = new A();
+	}
+}
+package p2;
+import p1.A;
+public class C  {
+	public static void main(String[] args) {
+		 A a1 = new A();
+	}
+}
 
+-> When a constructor is made public then inheritance of that class is  allowed in same package / outside the package (both)
+(Note: Construct re not inherit)
 
+Example 2:
+----------
+package p1;
+public class A {
+	public A() {
+		
+	}
+	
+}
+package p1;
+public class B extends A {
+	
+}
+package p2;
+import p1.A;
+public class C extends A {
+	
+}
 
+########################################
+Access Specifier on Class
+########################################
+-> A class can be only public / default
+-> A class cannot be private / protected
+
+What happens when a class is made default?
+Answer:
+->  It's object can be created in same class/same package but not inside different package
+-> Inheritance is allowed in same class
+
+Example 1:
+package p1;
+class A {
+	public static void main(String[] args) {
+		A a1 = new A();
+	}
+}
+package p1;
+public class B {
+	public static void main(String[] args) {
+		A a1 = new A();
+	}
+}
+package p2;
+import p1.A;//--->Error
+public class C {
+	public static void main(String[] args) {
+		A a1 = new A();//--->Error
+	}
+}
+
+Example 2:
+package p1;
+class A {
+	
+}
+package p1;
+public class B extends A{
+	
+}
+package p2;
+import p1.A;//-->Error
+public class C extends A{//-->Error
+	
+}
+
+--------------------------------------------------------------]
+What happens when a class is made public?
+Answer:
+->  It's object can be created in same class/same package & inside different package
+-> Inheritance is allowed in same class/same package & inside different package
+
+Example 1:
+----------
+package p1;
+public class A {
+	public static void main(String[] args) {
+		A a1 = new A();
+	}
+}
+package p1;
+public class B{
+	public static void main(String[] args) {
+		A a1 = new A();
+	}
+}
+package p2;
+import p1.A;
+public class C{
+	public static void main(String[] args) {
+		A a1 = new A();
+	}
+}
+
+Example 2:
+-----------------
+
+package p1;
+public class A {
+	
+}
+package p1;
+public class B extends A{
+	
+}
+package p2;
+import p1.A;
+public class C extends A{
+	
+}
+
+Note: A class cannot be made private
+---------------------------------------
+Example :
+package p1;
+private class A {//-->Error
+	
+}
+
+Note: A class cannot be made protected
+---------------------------------------
+Example :
+package p1;
+protected class A {//-->Error
+	
+}
 
 
 
