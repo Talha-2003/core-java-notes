@@ -1946,15 +1946,119 @@ Output:
 10
 1
 
+########################################################
+Access Specifier on Constructors
+#######################################################
+
+Can we Inherit Constructor?
+Answer: We cannot inherit constructor
+
+a. private Constructor
+----------------------------
+-> If a constructor is made private then its object cannot be created outside the class
+
+Example 1:
+package p1;
+public class A {
+	private A() {
+		
+	}
+	public static void main(String[] args) {
+		A a1 = new A();
+	}
+	
+}
+package p1;
+public class B {
+	public static void main(String[] args) {
+		A a1 = new A();//--->Error
+	}
+}
+package p2;
+import p1.A;
+public class C {
+	public static void main(String[] args) {
+		A a1 = new A();//-->Error
+	}
+}
+
+-> When a constructor is made private then inheritance of that class is not allowed
+(Note: Construct re not inherit)
+
+Example 2:
+----------
+package p1;
+public class A {
+	private A() {
+		
+	}
+	
+}
+package p1;
+public class B extends A{//-->Error
+	
+}
+package p2;
+import p1.A;
+public class C extends A{//-->Error
+	
+}
+
+b. default Constructor
+-------------------------
+-> If a constructor is made default then its object can be created in same class/same package but not outside the package
+
+Example 1:
+----------
+package p1;
+public class A {
+	A() {
+		
+	}
+	public static void main(String[] args) {
+		A a1 = new A();
+	}
+}
+package p1;
+public class B {
+	public static void main(String[] args) {
+		A a1 = new A();
+	}
+}
+package p2;
+import p1.A;
+public class C{
+	public static void main(String[] args) {
+		A a1 = new A();//-->Error
+	}
+}
 
 
+-> When a constructor is made default then inheritance of that class is  allowed only in same package but not outside the package
+(Note: Construct re not inherit)
 
+Example 2:
+----------
+package p1;
+public class A {
+	A() {
+		
+	}
+	
+}
+package p1;
+public class B extends A {
+	
+}
+package p2;
+import p1.A;
+public class C extends A{//-->Error
+	
+}
 
-
-
-
-
-
+e. protected Constructor
+--------------------------
+-> 
 
 
 
