@@ -2266,7 +2266,175 @@ protected class A {//-->Error
 	
 }
 
+###################################
+Note: 
+a. Compile Time: Here our java compiler converts .java files to .class files(byte code)
+b. Run Time: Here we run .class file(byte code using Java Runtime Environment.
 
+
+########################################
+Polymorphism in java
+#########################################
+
+Here we develop a feature such that it can take more than one form depending on the situation
+Note: Polymorphism is application only on methods and not variables
+
+------------------------------------------------------------------------------------
+Two types of polymorphism
+
+a. Overriding (Run time polymorphism): 
+-> Here we modify the logic of inherited method in child class
+Example 1:
+-----------
+package p1;
+public class GoldAccount {
+	public void onlineBanking() {
+		System.out.println("yes");
+	}
+	public void rateOfInterest() {
+		System.out.println("nill");
+	}
+}
+GoldAccount.java
+
+package p1;
+public class PlatinumAccount extends GoldAccount {
+	public void rateOfInterest() {
+		System.out.println("6% PA");
+	}
+	public static void main(String[] args) {
+		PlatinumAccount p = new PlatinumAccount();
+		p.onlineBanking();
+		p.rateOfInterest();//-->6% PA
+		System.out.println("--------");
+		GoldAccount g = new GoldAccount();
+		g.onlineBanking();
+		g.rateOfInterest();//-->nill
+	}
+}
+PlatinumAccount.java
+
+Output:
+yes
+6% PA
+--------
+yes
+nill
+
+Example 2:
+-> In version java 5 , A concept of annotations was introduced
+-> Annotations can instruct compiler to perform a specific task
+-> @AnnotationName
+-> @Override: This annotation instructs compiler to check whether overriding is happening or not
+
+	package p1;
+	public class GoldAccount {
+		
+		public void rateOfInterest() {
+			System.out.println("nill");
+		}
+	}
+GoldAccount.java
+
+package p1;
+public class PlatinumAccount extends GoldAccount {
+	@Override
+	public void rateOfInterests() {//-->Error because method name mismatch
+		System.out.println("6% PA");
+	}
+	
+}
+PlatinumAccount.java
+
+Example 3:
+---------
+Question: Access Specifier should it be same or can be different during Overriding?
+Answer: During Overriding we can increase the scope of access specifier but we cannot reduce the scope of access specifier
+
+package p1;
+public class GoldAccount {
+
+	void rateOfInterest() {
+		System.out.println("nill");
+	}
+}
+GoldAccount.java
+
+package p1;
+public class PlatinumAccount extends GoldAccount {
+//No Error Because default scope is increase to public	
+	@Override
+	public void rateOfInterest() {
+		System.out.println("6% PA");
+	}
+
+}
+PlatinumAccount.java
+
+-------------------------------------------------------------------
+
+Example 4:
+----------
+package p1;
+public class GoldAccount {
+
+	public void rateOfInterest() {
+		System.out.println("nill");
+	}
+}
+
+package p1;
+public class PlatinumAccount extends GoldAccount {
+//Error Because public scope is reduced to 	default
+	@Override
+	void rateOfInterest() {
+		System.out.println("6% PA");
+	}
+
+}
+
+Example 5:
+-----------
+package p1;
+public class GoldAccount {
+
+	void rateOfInterest() {
+		System.out.println("nill");
+	}
+}
+
+package p1;
+public class PlatinumAccount extends GoldAccount {
+//No Error Because default scope is increased to protected
+	@Override
+	protected void rateOfInterest() {
+		System.out.println("6% PA");
+	}
+}
+
+Example 6:
+-----------
+package p1;
+public class GoldAccount {
+
+	private void rateOfInterest() {
+		System.out.println("nill");
+	}
+}
+
+package p1;
+public class PlatinumAccount extends GoldAccount {
+//Error Because private methods we cannot inherit
+//Without inheritance Overriding cannot be done
+	
+	@Override
+	protected void rateOfInterest() {
+		System.out.println("6% PA");
+	}
+
+}
+
+b. Overloading (Compile time polymorphism)
 
 
 
