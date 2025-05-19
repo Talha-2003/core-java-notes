@@ -2277,7 +2277,7 @@ Polymorphism in java
 #########################################
 
 Here we develop a feature such that it can take more than one form depending on the situation
-Note: Polymorphism is application only on methods and not variables
+Note: Polymorphism is applicable only on methods and not variables
 
 ------------------------------------------------------------------------------------
 Two types of polymorphism
