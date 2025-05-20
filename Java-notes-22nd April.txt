@@ -2434,10 +2434,168 @@ public class PlatinumAccount extends GoldAccount {
 
 }
 
+####################################
+Note: 
+-> Static members cannot be inherited
+Example :
+package p1;
+public class GoldAccount {
+	static int x = 100;
+	public static void rateOfInterest() {
+		System.out.println("nill");
+	}
+}
+package p1;
+
+public class PlatinumAccount extends GoldAccount {
+	
+	public static void main(String[] args) {
+		PlatinumAccount.rateOfInterest();
+		System.out.println(PlatinumAccount.x);
+		//GoldAccount.rateOfInterest();
+		//GoldAccount.x
+	}
+
+}
+//PlatinumAccount.rateOfInterest()---->Converted to ------>GoldAccount.rateOfInterest();
+//PlatinumAccount.x--->Converted---->GoldAccount.x
+//Hence we are geeting output
+
+################################################
+Question : Can we Override static methods?
+-> We cannot override static methods, as we cannot inherit static methods
+########################################
+
+Example 1:
+package p1;
+public class GoldAccount {
+	
+	public static void test() {
+		System.out.println(100);
+	}
+}
+package p1;
+
+public class PlatinumAccount extends GoldAccount {
+	
+	@Override
+	public static void test() {//--->Error, cannot override static methods
+		System.out.println(100);
+	}
+
+}
+
+Example 2: During Overriding method return type should match
+package p1;
+public class GoldAccount {
+	
+	public int test() {
+		return 100;
+	}
+}
+package p1;
+
+public class PlatinumAccount extends GoldAccount {
+	
+	@Override
+	public void test() {//-> Error because method return type is not matching 
+		System.out.println(100);
+	}
+
+}
+
+
 b. Overloading (Compile time polymorphism)
+-> Here we develop more than one method with same name in same class provided they have different number of arguments or different type of arguments
 
+Example:
+-> I want to send email with attachment & Also an email to be sent without attachment
+-> Email feature is taking more than one form
 
+package p1;
 
+public class EmailService {
+	public void sendEmail(String to, String subject, String message) {
+		System.out.println("Email sending....");
+	}
+	public void sendEmail(String to, String subject, String message, String filePath) {
+		System.out.println("Email sending with attachment.....");
+	}
+	public static void main(String[] args) {
+		EmailService service = new EmailService();
+		service.sendEmail("mike@gmail.com", "Welcome", "Some Message","G:\\image.png");
+	}
+}
+
+################################
+Final Keyword
+################################
+-> If you make a variable final then we cannot change it's value(Just like constant variables)
+-> If you make static/non-static variable final then initialization is mandatory
+-> If you make a method final then overriding is not allowed
+-> If you make a class final then inheritance is not allowed
+
+Example 1: 
+----------
+package p1;
+
+public class A {
+	public static void main(String[] args) {
+		final int x = 10;
+		x=20;//-->Cannot change the value of final variable
+		System.out.println(x);
+	}
+}
+
+Example 2:
+----------
+package p1;
+
+public class A {
+	final int x;//->final mandatory to be initialized
+	final static int y;//->final mandatory to be initialized
+	//These above erros are called as blank field errors
+	public static void main(String[] args) {
+		
+	}
+}
+
+Example 3:
+----------
+package p1;
+
+public class A {
+	final public void test() {
+		System.out.println(100);
+	}
+}
+package p1;
+
+public class B extends A{
+	@Override
+	public void test() {//--> Error because we cannot override final methods
+		System.out.println(100);
+	}
+}
+
+Example 4:
+----------
+package p1;
+
+final public class A {
+	
+}
+package p1;
+
+public class B extends A{//---> Error because we cannot inherit final class
+	
+}
+
+#####################################
+interfaces in java - abstraction
+#######################################
+-> An interface can consist of only incomplete methods/abstract methods in it ( Java Version 7)
+-> All Variables in aninterface by default are final & static
 
 
 
