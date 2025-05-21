@@ -2595,13 +2595,109 @@ public class B extends A{//---> Error because we cannot inherit final class
 interfaces in java - abstraction
 #######################################
 -> An interface can consist of only incomplete methods/abstract methods in it ( Java Version 7)
--> All Variables in aninterface by default are final & static
+-> All Variables in an interface by default are final & static
+-> Interfaces defines what needs to be developed and not how it is to be developed
+-> Interfaces are like contract that a class follows, and the class has to implements these methods
+-> An Object of interface cannot be created. Because objects cannot have incomplete methods in it
 
+Example 1:
+---------
+package p1;
 
+public interface A {
 
+	public void test1() {//-->Error because complete methods are not allowed in an interface
+		
+	}
+}
 
+Example 2:
+-----------
+package p1;
 
+public interface A {
+	public void test1() ;
+}
 
+Example 3:
+----------
+package p1;
+
+public interface NotificationService {
+
+	//What needs to be implemented
+	public void emailService();
+	public void whatsAppService();
+	public void smsService();
+}
+
+package p1;
+
+public class NotificationServiceImpl 
+implements NotificationService
+{
+	//How it will be implemented
+	@Override
+	public void emailService() {
+		System.out.println("Email Sending");
+	}
+	@Override
+	public void whatsAppService() {
+		System.out.println("Whats app Sending");
+	}
+	@Override
+	public void smsService() {
+		System.out.println("SMS Sending");
+	}
+	public static void main(String[] args) {
+		NotificationServiceImpl impl = new NotificationServiceImpl();
+		impl.emailService();
+		impl.smsService();
+		impl.whatsAppService();
+	}
+}
+
+Example 4:
+----------
+package p1;
+
+public interface PropertyService {
+
+	public void addProperty();
+	public void updateProperty();
+	public void deleteProperty();
+	public void searchProperty();
+}
+package p1;
+
+public class PropertyServiceImpl 
+implements PropertyService
+{
+	@Override
+	public void addProperty() {
+		System.out.println("Added Property");
+	}
+	@Override
+	public void updateProperty() {
+		System.out.println("Updated Property");
+	}
+	@Override
+	public void deleteProperty() {
+		System.out.println("Deleted Property");
+	}
+	@Override
+	public void searchProperty() {
+		System.out.println("Search Property");
+	}
+	public static void main(String[] args) {
+		PropertyServiceImpl service = new PropertyServiceImpl();
+		service.addProperty();
+		service.updateProperty();
+		service.deleteProperty();
+		service.searchProperty();
+	}
+	
+}
 
 
 
