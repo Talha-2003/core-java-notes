@@ -2599,6 +2599,8 @@ interfaces in java - abstraction
 -> Interfaces defines what needs to be developed and not how it is to be developed
 -> Interfaces are like contract that a class follows, and the class has to implements these methods
 -> An Object of interface cannot be created. Because objects cannot have incomplete methods in it
+-> loosely coupled
+-> It forces all the implementation classes to have same method same resulting in good design
 
 Example 1:
 ---------
@@ -2699,13 +2701,157 @@ implements PropertyService
 	
 }
 
+#############################
+Note: Drawback of inheritance
+#############################
+-> Inheritance results in tightly couple programming.
+
+Example 5:
+----------
+package p1;
+
+public interface Calculator {
+	public void add(int x, int y);
+	public void mul(int x, int y);
+}
+
+package p1;
+public class OrdinaryCalc implements Calculator{
+
+	@Override
+	public void add(int x, int y) {
+		System.out.println(x+y);
+	}
+	
+	@Override
+	public void mul(int x, int y) {
+		System.out.println(x*y);
+	}
+
+}
+
+package p1;
+
+public class SciCalc implements Calculator{
+
+	@Override
+	public void add(int x, int y) {
+		System.out.println(x*x+y*y);
+	}
+	
+	@Override
+	public void mul(int x, int y) {
+		int num1 = x*x;
+		int num2 = y*y;
+		System.out.println(num1*num2);
+	}
+
+}
+package p1;
+
+public class MainCalc {
+	public static void main(String[] args) {
+		OrdinaryCalc oc = new OrdinaryCalc();
+		oc.add(10, 20);
+		oc.mul(10, 20);
+		
+		SciCalc sc = new SciCalc();
+		sc.add(10, 20);
+		sc.mul(10, 20);
+		
+		
+	}
+}
 
 
+Advantages of interfaces
+---------------------------
 
 
+1. abstraction: hiding of implementation details. That is we define what needs to be developed and not how it needs to be developed
+2. It imposes contract on a class to implement all methods of an interface
+3. Results in good design
+4. loosely coupled
 
+-> All Variables by default in an interface are final and static
+----------------------------------------------------------------
+package p1;
 
+//-> All variables in the given program are final & static
+//-> Hence intialization is mandatory
+public interface A {
+	int MAX_VAL=100;
+	static final int MIN_VAL=0;
+}
+package p1;
 
+public class B {
+	public static void main(String[] args) {
+		System.out.println(A.MAX_VAL);
+		System.out.println(A.MIN_VAL);
+	}
+}
+Output:
+100
+0
+#################################################
+Note:
+-> Class to Class Inheritance --> extends
+-> interface to interface Inheritance --> extends
+-> interface to class Inheritance --> implements
+#################################################
+
+Example 1:
+---------
+package p1;
+
+public interface A {
+	public void test1();
+}
+package p1;
+
+public interface B extends A{
+	public void test2();
+}
+package p1;
+
+public class C implements B {
+
+	@Override
+	public void test1() {
+		System.out.println("From test1");
+	}
+
+	@Override
+	public void test2() {
+		System.out.println("From test2");
+	}
+	public static void main(String[] args) {
+		C c1 = new C();
+		c1.test1();
+		c1.test2();
+	}
+
+}
+
+Example 2:
+-----------
+package p1;
+
+public interface A {
+	public void test2();
+}
+package p1;
+
+public interface B {
+	public void test1();
+}
+package p1;
+
+public interface C extends  A,B {
+
+	
+}
 
 
 
