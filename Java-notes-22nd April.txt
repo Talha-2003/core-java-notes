@@ -2853,11 +2853,250 @@ public interface C extends  A,B {
 	
 }
 
+Example 3:
+----------
+-> If you do mulitple inheritance on a class then it's parent should be interfaces only
+
+package p1;
+public interface A {
+	public void test2();
+}
+
+package p1;
+public interface B {
+	public void test1();
+}
+
+package p1;
+public class C implements  A,B {
+
+	@Override
+	public void test1() {
+		System.out.println("From test1");
+	}
+
+	@Override
+	public void test2() {
+		System.out.println("From test2");		
+	}
+	public static void main(String[] args) {
+		C c1 = new C();
+		c1.test1();
+		c1.test2();
+	}
+	
+}
+
+Example 4:
+----------
+-> On class can we perform extends implements together
+-> But ensure extends is used first and then implements
+
+package p1;
+public interface A {
+	public void test2();
+}
+
+package p1;
+public class B {
+	public void test1() {
+		System.out.println("From test1");
+	}
+}
+
+package p1;
+public class C extends B  implements  A {
+	@Override
+	public void test2() {
+		System.out.println("From test2");		
+	}
+	public static void main(String[] args) {
+		C c1 = new C();
+		c1.test1();
+		c1.test2();
+	}
+}
+
+###############################################################
+Question: Can i develop incomplete static method in an interface?
+Answer: We cannot inherit static method & override, hence incomplete static methods are not allowed in an interface
+
+Example:
+package p1;
+public interface A {
+	public static void test2();//-------> Error
+}
+
+###############################################################
+
+Java 8 Features
+###################
+1. default keyword:
+-> Using default keyword we can create complete methods inside interface. This was introduced in java version 8
+
+Example 1:
+--------
+package p1;
+public interface A {
+	default public void test1() {
+		System.out.println("From test1");
+	}
+}
+
+package p1;
+public class B implements A {
+	public static void main(String[] args) {
+		B b1 = new B();
+		b1.test1();
+	}		
+}
+Output:
+From test1
+
+Example 2:
+----------
+package p1;
+public interface A {
+	default public void test1() {
+		System.out.println("From test1");
+	}
+	public void test2();
+}
+
+package p1;
+public class B implements A {
+	public static void main(String[] args) {
+		B b1 = new B();
+		b1.test1();
+		b1.test2();
+	}
+	@Override
+	public void test2() {
+		System.out.println("From test2");
+	}		
+}
+Output:
+-------
+From test1
+From test2
+
+Note: 
+
+2. Functional Interface:
+---------------------------
+-> A functional interface should consist of exactly one incomplete method inside it
+-> Inside functional interface we can develop any number of complete methods using default keyword
+-> During inheritance/multiple inheritance if more than one method is inherited to Functional Interface then you will get error. As shown in below examples 
+
+Example 1:
+--------------------
+@FunctionalInterface
+public interface A {//Error-> Because cannot have ZERO incomplete method
+}
+
+Example 2:
+----------
+@FunctionalInterface
+public interface A {
+	public void test1();
+}
+
+Output: 
+No Error because it has exactly one incomplete method
+
+Example 3:
+----------
+@FunctionalInterface
+public interface A {//Error->A functional interface should consist of exactly one //incomplete method inside it
+	public void test1();
+	public void test2();
+}
+
+Example 4:
+----------
+package p1;
+@FunctionalInterface
+public interface A {
+	public void test1();
+	default public void test2() {
+		System.out.println("From Test 2");
+	}
+	default public void test3() {
+		System.out.println("From Test 3");
+	}
+	default public void test4() {
+		System.out.println("From Test 4");
+	}
+}
+package p1;
+public class B implements A {
+	public static void main(String[] args) {
+		B b1 = new B();
+		b1.test1();
+		b1.test2();
+		b1.test3();
+		b1.test4();
+	}
+
+	@Override
+	public void test1() {
+		System.out.println("From test 1");
+	}
+		
+}
+Output:
+---------
+From test 1
+From Test 2
+From Test 3
+From Test 4
+
+Example 5:
+-----------
+package p1;
+public interface A {
+	public void test1();
+}
+package p1;
+@FunctionalInterface
+public interface B extends A{
+	
+}
+Output: No Error
+
+Example 2:
+----------
+package p1;
+public interface A {
+	public void test1();
+	public void test2();
+}
+package p1;
+@FunctionalInterface
+public interface B extends A{
+	
+}
+Output: Error because we are inheriting 2 method to functional interface
+
+Example 6:
+---------
+package p1;
+public interface A {
+	public void test1();
+	
+}
+
+package p1;
+@FunctionalInterface
+public interface B extends A{
+	public void test2();
+}
+Output: Output: Error because we are inheriting 1 method to functional interface  and functional interface has a method which totals to 2 methods in an interface
 
 
 
-
-
-
+3. lambdas expression - 
+4. stream API
+5. Optional class
 
 
