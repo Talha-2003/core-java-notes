@@ -3093,10 +3093,93 @@ public interface B extends A{
 }
 Output: Output: Error because we are inheriting 1 method to functional interface  and functional interface has a method which totals to 2 methods in an interface
 
-
-
 3. lambdas expression - 
+-------------------------
+-> It was introduced in java 8
+-> Reduces number of lines of code
+-> Works with functional interfaces
+-> We can use lambdas expression in stream API
+
+How Lambdas Expression Works?
+
+Note: Fuctional Programming defines you say "what you want, not how to do it step-by-step"
+
+-> Its creates Annonymous class behind the scene. A class without any name is called Annonymous .
+-> Then lambdas expression creates an object and load the method by implementing inside object.
+-> Then we use object reference to call that implemented method
+
+Example 1:
+------------
+package p1;
+@FunctionalInterface
+public interface A {
+	public void test1();
+	
+}
+package p1;
+public class B{
+
+	public static void main(String[] args) {
+		A a1 = ()->{
+			System.out.println(100);
+		};
+		a1.test1();
+	}
+}
+
+Example 2:
+-----------
+package p1;
+@FunctionalInterface
+public interface A {
+	public void test1(int x);
+	
+}
+package p1;
+public class B{
+	public static void main(String[] args) {
+		A a1 = (int x)->{
+			System.out.println(x);
+		};
+		a1.test1(100);
+	}
+}
+
+Example 3:
+----------
+package p1;
+@FunctionalInterface
+public interface A {
+	public void test1(int x);
+	default public void test2() {
+		System.out.println(2);
+	}
+	default public void test3() {
+		System.out.println(3);
+	}
+}
+package p1;
+public class B{
+
+	public static void main(String[] args) {
+		A a1 = (int y) -> {
+			System.out.println(y);
+		};
+		a1.test1(100);
+		a1.test2();
+		a1.test3();
+	}
+}
+
 4. stream API
+---------------------
+Note: to learn Stream API Complete the following first
+a. Collection (Data Structure)
+b. Functional Programming
+
+
+
+
 5. Optional class
 
 
