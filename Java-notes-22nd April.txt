@@ -3177,9 +3177,173 @@ Note: to learn Stream API Complete the following first
 a. Collection (Data Structure)
 b. Functional Programming
 
+5. Optional class - We have to learn exception concept in java first
+--------------------------------------------
+Note:
+What are marker interfaces in java?
+-> Empty interfaces in java are called as marker interface
 
+Example: For marker interface
+package p1;
+public interface A {
+	
+}
 
+---------------------------------------------------
+Abstract class in java
+----------------------------
+-> We can create both complete / incomplete non static methods
+-> To define incomplete method, it mandatory to use abstract keyword
+-> In an abstract class we can create both static / non static members
+-> We cannot create static incomplete methods here but we can create complete static methods
+-> We can create main method inside abstract class
+-> We cannot create object of abstract class because abstract class can consist of incomplete methods
+-> We cannot perform multiple inheritance
 
-5. Optional class
+Example 1:
+----------
+package p1;
+abstract public class A {
+	public void test1() {
+		
+	}
+	abstract public void test2();
+	public static void test3() {
+		
+	}
+	public static void test4();//Error
+	public static void main(String[] args) {
+		A a1 = new A();//Error
+	}
+}
+
+Example 2: Error because multiple inheritance cannot be done
+-------------------------------------------------------------
+package p1;
+abstract public class A {
+	
+}
+package p1;
+abstract public class B{
+
+	
+}
+package p1;
+public abstract class C extends A,B{//Error
+
+}
+
+Difference between interface & abstract class
+-------------------------------------------------
+a. interface supports mulitple inheritance but abstract class does not support multiple inheritance
+b. All variables in an interface by default are final & static whereas inside abstract class we can create static/non static/final variables
+
+Example:
+-------
+package p1;
+abstract public class A {
+	static int x = 10;
+	public static void test() {
+		System.out.println(100);
+	}
+	public static void main(String[] args) {
+		System.out.println(A.x);
+		A.test();
+	}
+}
+Output:
+10
+100
+
+Example :
+---------
+package p1;
+abstract public class A {
+	int x = 10;
+	public void test() {
+		System.out.println(100);
+	}
+}
+package p1;
+public class B extends A {
+	public static void main(String[] args) {
+		B b1 = new B();
+		System.out.println(b1.x);
+		b1.test();
+	}
+
+}
+Output:
+10
+100
+
+Example:inheritance from interface-->abstract class-->class
+----------------------------------------------------------------
+package p1;
+public interface A {
+	public void test1();
+}
+package p1;
+abstract public class B implements A {
+	abstract public void test2();
+}
+package p1;
+public class C extends B{
+	@Override
+	public void test1() {
+		System.out.println("From test1");
+	}
+	@Override
+	public void test2() {
+		System.out.println("From test2");
+	}
+	public static void main(String[] args) {
+		C c1 = new C();
+		c1.test1();
+		c1.test2();
+	}
+
+}
+#############################################################################
+Note:In java 8 we can develop complete static methods & main method in an interface
+#################################################################################
+
+Example:
+package p1;
+public interface A {
+	static int x = 100;
+	public static void test1() {
+		System.out.println("From test1");
+	}
+	public static void main(String[] args) {
+		System.out.println(A.x);
+		A.test1();
+	}
+}
+Output:
+100
+From test1
+
+Exception and Exception Handling In Java
+-------------------------------
+-> Unexpected events are called exceptions.
+-> Exceptions will hault your program execution.
+-> Exceptions will Occur when bad user input is given
+
+Example 1:
+package p1;
+
+public class A {
+	public static void main(String[] args) {
+		int x = 10;
+		int y = 0;
+		int z = x / y;//Stop Program Here
+		System.out.println(z);
+		System.out.println("Welcome");
+	}
+}
+Output:
+Exception in thread "main" java.lang.ArithmeticException: / by zero
+	at app_java_1/p1.A.main(A.java:7)
 
 
