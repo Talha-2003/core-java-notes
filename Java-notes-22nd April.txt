@@ -3346,4 +3346,123 @@ Output:
 Exception in thread "main" java.lang.ArithmeticException: / by zero
 	at app_java_1/p1.A.main(A.java:7)
 
+#######################
+Exception handling
+#######################
+-> To handle exception we will use "try & catch" block in java
+-> When exception occurs in try block, it will create exception object and that object's address is given to catch block. Catch block will suppress that exception and further code will continue to execute
+
+Example :
+----------
+package p1;
+public class A {
+	public static void main(String[] args) {
+		try {
+			int x = 10;
+			int y = 0;
+			int z = x/y;
+			System.out.println(z);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		System.out.println("Welcome");
+	}
+}
+
+Types of Exception in java
+##########################
+
+There are two types of exception in java
+
+a. Compiletime / Checked Exception - These Exception will occur when .java file is compiled to .class file. That is during compilation we will get this exception
+
+b. Runtime / Unchecked Exception - These Exception will occur when we run .class file. That is during runtime
+
+###############################
+Runtime / unchecked Exceptions
+###############################
+
+1. ArithmeticException: This exception will occur when invalid mathematical operations are performed
+
+package p1;
+public class A {
+	public static void main(String[] args) {
+		try {
+			int x = 10;
+			int y = 0;
+			int z = x/y;
+			System.out.println(z);
+		} catch (ArithmeticException a) {
+			a.printStackTrace();
+		}
+		System.out.println("Welcome");
+	}
+}
+Output:
+java.lang.ArithmeticException: / by zero
+	at app_java_1/p1.A.main(A.java:7)
+Welcome
+
+Example 2: %ZERO
+----------
+package p1;
+public class A {
+	public static void main(String[] args) {
+		try {
+			int x = 11;
+			int y = 0;
+			int z = x%y;
+			System.out.println(z);
+		} catch (ArithmeticException a) {
+			a.printStackTrace();
+		}
+		System.out.println("Welcome");
+	}
+}
+
+Output:
+-------
+java.lang.ArithmeticException: / by zero
+	at app_java_1/p1.A.main(A.java:7)
+Welcome
+
+2. Null PointerException: This exception will occur when with null reference variable we try to access non static members of the class
+Example:
+--------
+package p1;
+public class A {
+	int x = 10;
+	public static void main(String[] args) {
+		try {
+			A a1 = null;
+			System.out.println(a1.x);
+		} catch (NullPointerException e) {
+			e.printStackTrace();
+		}
+		System.out.println("Welcome");
+	}
+}
+Output:
+java.lang.NullPointerException: Cannot read field "x" because "a1" is null
+	at app_java_1/p1.A.main(A.java:7)
+Welcome
+
+Example 
+----------
+package p1;
+public class A {
+	static int x = 10;
+	public static void main(String[] args) {
+		try {
+			A a1 = null;
+			System.out.println(a1.x);//A.x
+		} catch (NullPointerException e) {
+			e.printStackTrace();
+		}
+		System.out.println("Welcome");
+	}
+}
+Output:
+10
+Welcome
 
