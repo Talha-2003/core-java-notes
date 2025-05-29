@@ -3466,3 +3466,94 @@ Output:
 10
 Welcome
 
+
+Note:
+
+Primitive    Wrapper Class
+byte		Byte
+short		Short
+int		Integer
+long		Long
+float		Float
+double		Double
+char		Character
+
+Example 1: I want to convert String to Integer
+
+public class A {
+	public static void main(String[] args) {
+		String x = "100";
+		int  y = Integer.parseInt(x);
+		System.out.println(y);
+	}
+}
+
+Example 2:I want to convert String to Float
+
+public class A {
+	public static void main(String[] args) {
+		String x = "10.3";
+		float  y = Float.parseFloat(x);
+		System.out.println(y);
+	}
+}
+
+Example 3:I want to convert String to Double
+
+public class A {
+	public static void main(String[] args) {
+		String x = "10.3";
+		double  y = Double.parseDouble(x);
+		System.out.println(y);
+		
+	}
+}
+
+Example 4:
+-----------
+package p1;
+
+public class A {
+	public static void main(String[] args) {
+		try {
+			String x = "10.3dasdsd";
+			double  y = Double.parseDouble(x);
+			System.out.println(y);
+		} catch (NumberFormatException e) {
+			e.printStackTrace();
+		}
+		System.out.println("Welcome");
+		
+	}
+}
+Output:
+java.lang.NumberFormatException: For input string: "10.3dasdsd"
+	at java.base/jdk.internal.math.FloatingDecimal.readJavaFormatString(FloatingDecimal.java:2054)
+	at java.base/jdk.internal.math.FloatingDecimal.parseDouble(FloatingDecimal.java:110)
+	at java.base/java.lang.Double.parseDouble(Double.java:792)
+	at app_java_1/p1.A.main(A.java:7)
+Welcome
+
+######################
+What is class upcasting?
+########################
+-> Here we store child class object address into parent class reference variable, so that reference variable becomes re-usable
+
+Example: Reusing reference variable
+
+public class A {
+	
+}
+
+public class B extends A{
+
+}
+
+public class C extends A{
+	public static void main(String[] args) {
+		A a1 = new B();
+		System.out.println(a1);
+		a1 = new C();
+		System.out.println(a1);
+	}
+}
