@@ -3557,3 +3557,155 @@ public class C extends A{
 		System.out.println(a1);
 	}
 }
+
+Example 2: How we can implement polymorphism for multiple child classes by using same reference variable
+
+public class A {
+	void display() {
+        System.out.println("Inside class A");
+    }
+}
+
+public class B extends A{
+	 @Override
+	    void display() {
+	        System.out.println("Inside class B");
+	    }
+}
+
+public class C extends A{
+	  @Override
+	    void display() {
+	        System.out.println("Inside class C");
+	    }
+	public static void main(String[] args) {
+				
+		A a1 = new B();
+		a1.display();    // Calls B's version => "Inside class B"
+		a1 = new C();
+		a1.display();    // Calls C's version => "Inside class C"
+	}
+}
+
+Note:
+
+🧠 Why do we do it?
+1. To reuse the parent class reference for multiple child class objects.
+2. To enable polymorphism on mulitple child classes.
+3. To write generic, flexible code that works with different subclasses.
+
+Note:
+instanceof - It will check which class object address is present inside the reference variable
+
+Example:
+
+public class A {
+	
+}
+
+public class B extends A{
+	
+}
+
+public class C extends A{
+	 
+	public static void main(String[] args) {
+				
+	  A a1 = new B();
+	  System.out.println(a1 instanceof B);
+	}
+}
+
+Output:
+true
+
+What is class downcasting?
+##########################
+-> Here we store parent class object address into child class reference variable
+-> To perform downcasting, firstly do upcasting and then perform downcasting
+Example:
+---------
+public class A {
+	
+}
+public class B extends A{
+	
+}
+public class C extends A{
+	 
+	public static void main(String[] args) {
+		
+		A a1 = new B();
+		if(a1 instanceof B) {
+			B b1 = (B)a1;
+			System.out.println("Downcasting successful!");
+		}
+	}
+}
+
+Example:
+--------
+public class A {
+	public void display() {
+		System.out.println("Inside class A");
+	}
+}
+public class B extends A{
+	public void showB() {
+        System.out.println("Inside class B");
+        }
+}
+public class C extends A {
+	public void showC() {
+		System.out.println("Inside class C");
+	}
+}
+public class MainClass {
+	public static void processObject(A obj) {
+        if (obj instanceof B) {
+            B b = (B) obj;  // Downcasting to B
+            b.showB();
+        } else if (obj instanceof C) {
+            C c = (C) obj;  // Downcasting to C
+            c.showC();
+        } else {
+            obj.display();
+        }
+    }
+    public static void main(String[] args) {
+    	processObject(new B());
+	}
+}
+
+Note:
+-Using upcasting we can access only parent class members, you cannot access child class members
+-After upcating to access child class members we have to perform downcasting
+
+Example:
+---------
+package p1;
+
+public class A {
+	public void display() {
+		System.out.println("Inside class A");
+	}
+}
+public class B extends A{
+	public void showB() {
+       	 System.out.println("Inside class B");
+        }
+	public static void main(String[] args) {
+		A a1 = new B();
+		if(a1 instanceof B) {
+			B b1 = (B)a1;
+			b1.showB();
+		}
+		
+	}
+}
+
+
+
+
+
+
