@@ -3705,6 +3705,235 @@ public class B extends A{
 }
 
 
+Arrays in java:
+###############
+-> In java arrays holds collection of value
+-> Anything that holds colection of values is called as a data struture
+-> Array in java is treated as an object
+-> Arrays starts with index zero
+-> To store and read values we use this formula in arrays - start_address + index*memory_size
+-> Memory allocation happens to be in sequence(Continuous).
+
+Example 1:
+----------
+package p1;
+public class A {
+	public static void main(String[] args) {
+		int[] age = new int[4];
+		age[0] = 90;
+		age[1] = 89;
+		age[2] = 67;
+		age[3] = 97;
+	
+		System.out.println(age[0]);
+		System.out.println(age[1]);
+		System.out.println(age[2]);
+		System.out.println(age[3]);
+	} 
+	
+}
+
+-> To find size of an array dynamically we will use  public final field "length". When array is created this variable will get initiliazed
+Example : age.length
+
+
+Example 2:
+----------
+package p1;
+
+public class A {
+	public static void main(String[] args) {
+		int[] age = new int[40];
+		System.out.println(age.length);
+	} 
+	
+}
+Ouput: 40
+
+##########################
+Unary Operators in java
+##############################
+
+Types:
+1. Increment Operator
+   1.1 Post Increment
+   1.2 Pre Increment
+
+2. Decrement Operator
+   2.1 Post Decrement
+   2.2 Pre Decrement
+
+1.1 Post Increment -  Increment the value of the variable next time you see the same variable
+
+Example 1:
+----------
+package p1;
+
+public class A {
+	public static void main(String[] args) {
+		int i=0;
+		int j = i++;
+		System.out.println(i);
+		System.out.println(j);
+	} 
+	
+}
+Output:
+1
+0
+
+Example 2:
+----------
+package p1;
+
+public class A {
+	public static void main(String[] args) {
+		int i=10;
+		int j = i++ + i++ + i++;
+		System.out.println(i);
+		System.out.println(j);
+	} 
+	
+}
+Ouput:
+13
+33
+
+Example 3:
+----------
+package p1;
+
+public class A {
+	public static void main(String[] args) {
+		int i=10;
+				
+		int j = i++ + i++ + i++ + i++ + i++;
+		System.out.println(i);
+		System.out.println(j);
+	} 
+	
+}
+Ouput:
+15
+60
+
+ 1.2 Pre Increment - Increment the value of variable in same step
+
+Example 1:
+-----------
+package p1;
+
+public class A {
+	public static void main(String[] args) {
+		int i=10;
+				
+		int j = ++i;
+		
+		System.out.println(i);
+		System.out.println(j);
+	} 
+	
+}
+Ouput:
+11
+11
+
+Example 2:
+----------
+package p1;
+
+public class A {
+	public static void main(String[] args) {
+		int i=10;
+				
+		int j = ++i + ++i + ++i;
+		
+		System.out.println(i);
+		System.out.println(j);
+	} 
+	
+}
+Ouput:
+13
+36
+
+Example 3:
+---------
+package p1;
+
+public class A {
+	public static void main(String[] args) {
+		int i=10;
+				
+		int j = ++i + i++ + ++i + i++ + ++i;
+		
+		System.out.println(i);
+		System.out.println(j);
+	} 
+	
+}
+Output:
+15
+63
+
+ 2.1 Post Decrement - Here we decrement the value of i by 1 when we next time see the same variable:
+
+Example 1:
+---------
+package p1;
+
+public class A {
+	public static void main(String[] args) {
+		int i=10;
+				
+		int j = i-- + i--;
+		
+		System.out.println(i);
+		System.out.println(j);
+	} 
+	
+}
+Output:
+------
+8
+19
+
+Example 2:
+-----------
+package p1;
+
+public class A {
+	public static void main(String[] args) {
+		int i=10;
+				
+		int j = i-- + i++ + i-- + i--;
+		
+		System.out.println(i);
+		System.out.println(j);
+	} 
+	
+}
+Output:
+8
+38
+
+ 2.2 Pre Decrement -  Here we decrement the value of the variable in same step by 1
+
+Example 1:
+----------
+package p1;
+
+public class A {
+	public static void main(String[] args) {
+		int i=10;
+				
+		int j = --i + --i;
+		
+		System.out.println(i);
+		System.out.println(j);
+	} 
+	
+}
 
 
 
