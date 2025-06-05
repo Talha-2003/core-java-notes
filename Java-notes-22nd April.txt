@@ -3935,6 +3935,264 @@ public class A {
 	
 }
 
+#################
+Scanner class - Is used to provide user input
+################
+
+Example 1:
+----------
+package p1;
+import java.util.Scanner;
+public class A {
+	public static void main(String[] args) {
+		
+		Scanner scan = new Scanner(System.in);
+		System.out.println("Enter your name:");
+		String name = scan.next();//Can read one String word only
+		System.out.println("Your name is "+name);
+		System.out.println("Enter your age:");
+		int age = scan.nextInt();//Can read on Integer value only
+		System.out.println("Your age is "+age);
+		System.out.println("Enter your weight:");
+		float weight = scan.nextFloat();//Can read on float values
+		System.out.println("Your weight is "+weight);
+		System.out.println("Enter your Answer:");
+		boolean ans = scan.nextBoolean();//Can read on float values
+		System.out.println("Your ans is "+ans);
+		scan.close();
+		
+	} 
+	
+}
+Output:
+Enter your name:
+mike
+Your name is mike
+Enter your age:
+100
+Your age is 100
+Enter your weight:
+98.34
+Your weight is 98.34
+Enter your Answer:
+true
+Your ans is true
+
+Example 2: How to read multiple String words using nextLine() method
+--------------------------------------------------------------------------
+package p1;
+import java.util.Scanner;
+public class A {
+	public static void main(String[] args) {
+		
+		Scanner scan = new Scanner(System.in);
+		System.out.println("Enter your name:");
+		String name = scan.nextLine();//Can read Multiple String words
+		System.out.println(name);
+		scan.close();
+	} 
+	
+}
+
+##############
+Loops in java
+##############
+1. for loop
+Example 1;
+---------
+public class A {
+	public static void main(String[] args) {
+		
+		for (int i = 0; i < 4; i++) {//0 to 3
+			System.out.println(i);
+		}
+	} 
+	
+}
+Example 2:
+a. User will enter the pin number 1234
+b. If the entered pin number is valid , then program should print welcome and stop
+c. If pin number is invalid, user can attempt to enter pin maximum 3 times.
+d. If All 3 times pin number is invalid then card blocked message we should get
+
+Code:
+package p1;
+import java.util.Scanner;
+//break
+//1. Can be used only inside loops and switch case statements
+//2. It stops the for loop execution
+public class A {
+	public static void main(String[] args) {
+		Scanner scan = new Scanner(System.in);
+		
+		for(int i=0;i<3;i++) {//0 to 2
+			System.out.println("Enter the pin number");
+			int pinNumber = scan.nextInt();
+			if(pinNumber==1234) {
+				System.out.println("Welcome");
+				break;
+			}else {
+				System.out.println("Invalid Pin number");
+				if(i==2) {
+					System.out.println("Card is blocked");
+				}
+			}
+		}
+		scan.close();
+	} 
+	
+}
+
+
+
+
+2. while loop
+Example 1:
+----------
+package p1;
+public class A {
+	public static void main(String[] args) {
+		int i=0;
+		while(i<3) {//If condition true will enter while loop
+			System.out.println(i);
+			i++;
+		}
+	}
+	
+}
+
+Example 2:
+--------
+a. Enter the amount, and we should get message please collect cash
+b. Then prompt a message do you want to continue(yes or no)
+c. If yes again enter the amount and we should get message please collect cash
+d. If enter no program should stop
+
+Code:
+import java.util.Scanner;
+
+public class A {
+	public static void main(String[] args) {
+		Scanner scan = new Scanner(System.in);
+		String i="yes";
+		while(i.equals("yes")) {//If condition true will enter while loop
+			System.out.println("Enter the amount");
+			int amount = scan.nextInt();
+			System.out.println("Please collect the cash: rs. "+amount);
+			System.out.println("Do you want to continue(yes/no)?");
+			i = scan.next();
+			
+			if(i.equals("no")) {
+				System.out.println("Thank you. Visit again");
+			}
+		}
+	}
+	
+}
+
+3. do while loop -  Will run first time without condition check. For second iteration condition will be evaluated
+
+Example 1:
+---------
+package p1;
+public class A {
+	public static void main(String[] args) {
+		int i=100;
+		do {
+			System.out.println(i);
+			i++;
+		}while(i<3);
+	}
+	
+}
+Example 2:
+----------
+package p1;
+public class A {
+	public static void main(String[] args) {
+		int i=0;
+		do {
+			System.out.println(i);
+			i++;
+		}while(i<3);
+	}
+	
+}
+
+
+4. for each loop - 
+-> Works only with data structure
+-> Can only read value of data structure one by one
+-> Loop will run until all values reading is not completed in the given data structure
+
+Example:
+package p1;
+public class A {
+	public static void main(String[] args) {
+		int[] age = new int[3];
+		age[0] = 100;
+		age[1] = 101;
+		age[2] = 120;
+		
+		for(int x:age) {
+			System.out.println(x);
+		}
+	}
+	
+}
+
+####################
+Continuation of Arrays:
+######################
+
+Example 1:
+----------
+package p1;
+public class A {
+	public static void main(String[] args) {
+		int[] age = new int[3];
+		age[0] = 100;
+		age[1] = 101;
+		age[2] = 120;
+		
+		for (int i = 0; i < age.length; i++) {//0 to 2
+			System.out.println(age[i]);
+		}
+	}
+	
+}
+
+#####################################
+ArrayIndexOutOfBoundsException
+#####################################
+
+-> When we exceed array size we get this exception
+
+Example:
+------
+package p1;
+public class A {
+	public static void main(String[] args) {
+		try {
+			int[] age = new int[3];
+			age[0] = 100;
+			age[1] = 101;
+			age[2] = 120;
+			age[3] = 103;
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		System.out.println("Welcome");
+		
+	}
+	
+}
+Output:
+java.lang.ArrayIndexOutOfBoundsException: Index 3 out of bounds for length 3
+	at app_java_1/p1.A.main(A.java:9)
+Welcome
+
+
 
 
 
