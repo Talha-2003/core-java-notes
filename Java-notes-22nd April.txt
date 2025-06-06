@@ -4192,7 +4192,127 @@ java.lang.ArrayIndexOutOfBoundsException: Index 3 out of bounds for length 3
 	at app_java_1/p1.A.main(A.java:9)
 Welcome
 
+####################
+Continue Keyword in java
+#####################
+
+The continue keyword is used inside loops (for, while, or do-while) to skip the current iteration and jump to the next one.
+
+package p1;
+public class A {
+	public static void main(String[] args) {
+		for (int i = 0; i < 5; i++) {
+			
+			if(i==3) {
+				continue;
+			}
+			System.out.println(i);//0 1 2 4
+		}
+		
+	}
+	
+}
+Output:
+0
+1
+2
+4
 
 
+######################
+else-if ladder statement
+######################
+-> If the user enters yes, it should print pass
+-> If the user enters no, it should print fail
+-> If the user enters something else, it should print invalid input
+
+Example:
+-------------
+package p1;
+
+import java.util.Scanner;
+
+public class A {
+	public static void main(String[] args) {
+		Scanner scan = new Scanner(System.in);
+		System.out.println("Enter the input(yes/no)");
+		String value = scan.next();
+		if(value.equals("yes")) {
+			System.out.println("Pass");
+		} else if(value.equals("no")) {
+			System.out.println("Fail");
+		} else {
+			System.out.println("Invalid Input");
+		}
+	}
+	
+}
+
+############################
+Swicth Case
+############################
+
+package p1;
+
+import java.util.Scanner;
+
+public class A {
+	public static void main(String[] args) {
+		Scanner scan = new Scanner(System.in);
+		System.out.println("Enter the floor number");
+		int key=scan.nextInt();
+		switch (key) {
+		case 1:
+			System.out.println("1st Floor");
+			break;
+		case 2:
+			System.out.println("2nd Floor");
+			break;
+		case 3:
+			System.out.println("3rd Floor");
+			break;
+		default:
+			System.out.println("Invalid input");
+			break;
+		}
+	}
+	
+}
 
 
+###########################################
+Removing Duplicate elements from an array
+###########################################
+-> For the below logic array should be sorted
+
+Steps
+------
+1. Create a temp array which same size as that of x
+int[] x = {3,3,4,5,6,6,7};
+int[] temp = new int[x.length];
+
+2. Compare i with i+1 of array x, if not equal copy the value from x[i] to temp[j] and increment j by 1
+
+3. When you reach last index of array x, copy that value directly to temp[j];
+
+Code:
+package p1;
+public class A {
+	public static void main(String[] args) {
+		int[] x = {3,3,4,5,6,6};
+		int[] temp = new int[x.length];
+		int j=0;
+		for(int i=0;i<x.length-1;i++) {//i=5
+			if(x[i]!=x[i+1]) {//with index 5 to 6
+				temp[j] = x[i];
+				j++;
+			}
+		}
+		temp[j] = x[x.length-1];
+		
+		for(int arr:temp) {
+			System.out.println(arr);
+		}
+	}
+	
+}
