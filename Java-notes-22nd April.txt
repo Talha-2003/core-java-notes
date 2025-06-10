@@ -4376,6 +4376,190 @@ public class A {
 2. Get Highest & Lowest Value in an array
 #################
 
+######################
+File Handling in Java
+#######################
+
+a. File
+-----------
+Note: Special Characters
+               System.out.print(200);
+		System.out.print("\n");
+		System.out.print(300);
+		System.out.print("\n");
+		System.out.print(200);
+		System.out.print("\t");
+		System.out.print(300);
+Example 1:It holds the given path in variable "f" without check the file exist
+----------------------------------------------------
+package p1;
+import java.io.File;
+public class A {
+	public static void main(String[] args) {
+		File f = new File("E:\\april\\t1.txt");
+		System.out.println(f);
+	}
+}
+
+1. exists() - 
+------------
+a. It is a non static method present inside File class
+b. Return type of this method is boolean
+c. It checks whether the file exists in the given path.
+d. If file exists, it will return true or else false
+
+Example:
+---------
+package p1;
+import java.io.File;
+public class A {
+	public static void main(String[] args) {
+		File f = new File("G:\\april\\t100.txt");
+		boolean val = f.exists();
+		System.out.println(val);
+	}
+}
+
+2. delete() - 
+------------
+a. It is a non static method present inside File class
+b. Return type of this method is boolean
+c. It deletes the file exists in the given path.
+d. If file is deleted, it will return true or else false
+
+Example:
+--------
+package p1;
+import java.io.File;
+public class A {
+	public static void main(String[] args) {
+		File f = new File("G:\\april\\t1.txt");
+		boolean val = f.delete();
+		System.out.println(val);
+	}
+}
+
+3.mkdir() - 
+------------
+a. It is a non static method present inside File class
+b. Return type of this method is boolean
+c. It creates folder  in the given path.
+d. If folder is created, it will return true or else false
+e. It will not replace existing folder
+
+Example:
+-------
+package p1;
+import java.io.File;
+public class A {
+	public static void main(String[] args) {
+		File f = new File("G:\\april\\p2");
+		boolean val = f.mkdir();
+		System.out.println(val);
+	}
+}
+
+Example: To delete Folder using delete() method
+------------------------------------------------
+public class A {
+	public static void main(String[] args) {
+		File f = new File("G:\\april\\p2");
+		boolean val = f.delete();
+		System.out.println(val);
+	}
+}
+
+Note: delete() method can delete folder/file both
+
+4.length() - 
+------------
+a. It is a non static method present inside File class
+b. Return type of this method is long
+c. It counts characters with white spaces in the given file.
+
+Example:
+--------
+package p1;
+import java.io.File;
+public class A {
+	public static void main(String[] args) {
+		File f = new File("G:\\april\\t1.txt");
+		long val = f.length();
+		System.out.println(val);
+	}
+}
+
+Note:
+Compiletime Exception/ Checkedc Exception
+_____________________________________________
+-> These exceptions will occur even when the program is correct/Incorrect
+-> Handling exception becomes mandatory when it is compile time
+
+5. createNewFile()-
+-------------------
+a. It is non static method present inside File Class
+b. It's return type is boolean
+c. It Throws Compiletime exception. So should be handled before executing the program
+d. If file is created, it will return true or else false
+e. Will not replace exisiting file
+
+Example:
+------
+package p1;
+import java.io.File;
+import java.io.IOException;
+public class A {
+	public static void main(String[] args) {
+		try {
+			File f = new File("G:\\april\\t1.txt");
+			boolean val = f.createNewFile();
+			System.out.println(val);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	
+	}
+}
+
+##################
+IOException in Java
+############
+The IOException is a checked exception in Java, part of the java.io package. It is thrown when an Input/Output operation fails or is interrupted.
+
+Scenario			Example
+File not found			Reading a file that doesn't exist
+File not readable		Permission denied or locked file
+Network I/O failure		Socket disconnected unexpectedly
+Stream closed unexpectedly	Trying to read from a closed stream
+Writing to a full disk		OutputStream write failure
+
+
+6. list()-
+-------------------
+a. It is non static method present inside File Class
+b. It's return type is String[] array
+c. It gets all files/folders names from a given path
+
+Example:
+-------
+package p1;
+import java.io.File;
+public class A {
+	public static void main(String[] args) {
+			File f = new File("G:\\april\\");
+			String[] val = f.list();
+			for(String x: val) {
+				System.out.println(x);
+			}
+			System.out.println(val.length);
+	}
+}
+
+
+2. FileReader
+3. FileWriter
+4. BufferedReader
+5. BufferedWriter
 
 
 
