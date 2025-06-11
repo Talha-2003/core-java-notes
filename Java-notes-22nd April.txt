@@ -4556,8 +4556,133 @@ public class A {
 }
 
 
-2. FileReader
-3. FileWriter
+2. FileReader:
+#######################
+-> It can read text file content
+->read(): int
+
+Example 1:
+-----------
+package app_java_3;
+import java.io.FileReader;
+public class A {
+	public static void main(String[] args) {
+		try {
+			FileReader fr = new FileReader("G:\\april\\t1.txt");
+			System.out.println((char)fr.read());
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+}
+
+Example 2:
+----------
+
+package app_java_3;
+import java.io.File;
+import java.io.FileReader;
+public class A {
+	public static void main(String[] args) {
+		try {
+			File f = new File("G:\\april\\t1.txt");
+			FileReader fr = new FileReader(f);
+			for (int i = 0; i < f.length(); i++) {//0 to 3
+				System.out.print((char)fr.read());
+			}
+			fr.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+}
+
+-> read(char[] ch)
+Example
+-------
+package app_java_3;
+import java.io.File;
+import java.io.FileReader;
+public class A {
+	public static void main(String[] args) {
+		try {
+			File f = new File("G:\\april\\t1.txt");
+			FileReader fr = new FileReader(f);
+			char[] ch = new char[(int)f.length()];
+			fr.read(ch);
+			
+			for(char c:ch) {
+				System.out.print(c);
+			}
+			
+			fr.close();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+}
+
+
+
+#####################
+FileWriter class
+#####################
+1. It will write content to text file
+2. If File is not present in given path, it will create a new file
+3. If the file is present in the given path, then it will replace the existing file by default
+4. During FileWriter object creation if true is given, then it will not replace existing content of the file. But will create new file if file was not present in given path
+Example: FileWriter fw = new FileWriter("G:\\april\\t4.txt",true);
+5. During FileWriter object creation if fale/ no boolean value is given, then it will replace existing content of the file and  will create new file if file was not present in given path
+Example: FileWriter fw = new FileWriter("G:\\april\\t4.txt",false);
+Example: FileWriter fw = new FileWriter("G:\\april\\t4.txt");
+
+Example:
+---------
+package app_java_3;
+
+import java.io.FileWriter;
+
+public class A {
+	public static void main(String[] args) {
+		try {
+			FileWriter fw = new FileWriter("G:\\april\\t4.txt",false);
+			fw.write(97);//write(int x)
+			fw.write("100");//write(String x)
+			
+			char[] ch = {'a','b','c'};
+			fw.write(ch);//write(char[] x)
+			
+			fw.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+}
+
+Example 2:
+----------
+package app_java_3;
+
+import java.io.FileWriter;
+
+public class A {
+	public static void main(String[] args) {
+		try {
+			FileWriter fw = new FileWriter("G://april//t1.txt");
+			fw.write("mike");
+			fw.write("\n");
+			fw.write("stallin");
+			fw.write("\n");
+			fw.write("adam");
+			fw.close();//Save the file content and closes the file
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+}
+
+
 4. BufferedReader
 5. BufferedWriter
 
