@@ -4683,8 +4683,171 @@ public class A {
 }
 
 
-4. BufferedReader
-5. BufferedWriter
+########################
+BufferedReader
+#######################
+1. This will improve file reading performance
+2. This should be used with FileReader class, If we use only BufferedReader then FileReading cannot be done
+3. It has readLine() method. Using this method we can read the entire line from the file
+
+Example 1:
+----------
+package p1;
+import java.io.BufferedReader;
+import java.io.FileReader;
+public class A {
+	public static void main(String[] args) {
+		try {
+			FileReader fr = new FileReader("G://april//t1.txt");
+			BufferedReader br = new BufferedReader(fr);
+			System.out.println((char)br.read());
+			br.close();
+			fr.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+}
+
+Example 2:
+----------
+package p1;
+import java.io.BufferedReader;
+import java.io.FileReader;
+public class A {
+	public static void main(String[] args) {
+		try {
+			FileReader fr = new FileReader("G://f1//t1.txt");
+			BufferedReader br = new BufferedReader(fr);
+			char[] ch = new char[4];
+			br.read(ch);
+			for(char c: ch) {
+				System.out.print(c);
+			}
+			br.close();
+			fr.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+}
+
+Example 3:
+-----------
+package p1;
+import java.io.BufferedReader;
+import java.io.FileReader;
+public class A {
+	public static void main(String[] args) {
+		try {
+			FileReader fr = new FileReader("G://f1//t1.txt");
+			BufferedReader br = new BufferedReader(fr);
+			for(int i=0;i<3;i++) {
+				System.out.println(br.readLine());
+			}
+			br.close();
+			fr.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+}
+
+
+#####################
+BufferedWriter
+#####################
+-> It improves file writing performance
+-> This should be used with FileWriter class, If we use only BufferedWriter then FileWriting cannot be done
+-> BufferedWriter class has newline() method
+
+Example 1:
+----------
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+public class A {
+	public static void main(String[] args) {
+		try {
+			FileWriter fw = new FileWriter("G://april//t1.txt",true);
+			BufferedWriter bw = new BufferedWriter(fw);
+			bw.write("mike");
+			bw.newLine();
+			bw.write(97);
+			char[] ch = {'b','c','d'};
+			bw.newLine();
+			bw.write(ch);
+			
+			bw.close();
+			fw.close();
+			
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+}
+
+################################
+Serialization & Deserialization
+################################
+
+-> Serialization is a process of converting object to byte code and storing that in a file system
+-> De-Serialization is a process of reading byte code from the file and form Object based on byte code
+-> To skip writing certain content to object during serialization we can use transient keyword
+
+Example:
+--------
+package p1;
+import java.io.Serializable;
+public class A implements Serializable{
+	String name="mike";
+	transient String password = "testing";
+}
+
+package p1;
+import java.io.FileOutputStream;
+import java.io.ObjectOutputStream;
+public class B {
+	public static void main(String[] args) {
+		A a1 = new A();
+		try {
+			FileOutputStream fos = new FileOutputStream("G:\\april\\file.ser");
+			ObjectOutputStream oos = new ObjectOutputStream(fos);
+			oos.writeObject(a1);
+		
+			oos.close();
+			fos.close();
+		} catch (Exception e) {
+			
+			e.printStackTrace();
+		}
+		
+	}
+}
+
+package p1;
+import java.io.FileInputStream;
+import java.io.ObjectInputStream;
+public class C {
+	public static void main(String[] args) {
+		try {
+			FileInputStream fis = new FileInputStream("G:\\april\\file.ser");
+			ObjectInputStream ois = new ObjectInputStream(fis);
+			A a1 = (A)ois.readObject();
+			System.out.println(a1.name);
+			System.out.println(a1.password);
+			
+			ois.close();
+		
+			
+		} catch (Exception e) {
+			
+			e.printStackTrace();
+		}
+		
+	}
+}
+
 
 
 
