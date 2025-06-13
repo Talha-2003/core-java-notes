@@ -4848,6 +4848,33 @@ public class C {
 	}
 }
 
+##########################################
+JDBC - Java Database Connnectivity
+##########################################
+-> Database: Here we store data in the form of tables permanently
+-> Popular Databases: MySQl, Postgres, Oracle, SQlServer, MongoDB, Derby, h2Database
+-> Install MySql Database
+Download from here: https://dev.mysql.com/downloads/windows/installer/8.0.html
+-> When you download MySql Workbench you will get the following
+a. IDE - To Write SQl Query (Structured Query Language)
+(SQl query is use to interact with the database)
+b. MySQl Server
 
+Installation Doc: https://www.prowesstics.com/blogs/mysql-workbench-installation/
+
+
+-> Launch Mysqlworkbench
+-> Create psaDB connection
+-> Crate Database: Create Database psaDB
+-> Connect to Database: use psaDB
+-> Create Table Student: 
+Create table student(
+	name varchar(45),
+    email varchar(128),
+    mobile varchar(10)
+)
+-> Read Table Content: Select * from student
+-> Insert data to table: insert into student values('mike','mike@gmail.com','9632629033')
+-> Read Table Content: Select * from student
 
 
