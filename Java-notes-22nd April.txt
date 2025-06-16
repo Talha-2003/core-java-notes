@@ -4878,3 +4878,126 @@ Create table student(
 -> Read Table Content: Select * from student
 
 
+Assignment: Complete SQL Recorded Classes. Access will be given in PSA App. Nearly covered 250+ examples
+
+After Installing MySQl Workbench, We can now start with JDBC Concept
+------------------------------------------------------------------------
+-> Interacting with database using java program
+-> Download Connector File for MySql: https://dev.mysql.com/downloads/file/?id=538917
+-> Create a folder with name lib inside root path of your java project & paste the connector jar file inside it
+-> Right click on project>>Go to properties>>select java build path>> click on libraries tab>>Click on add jar>>navigate to lib folder and select mysql connector j jar>> click apply + close
+
+Example 1: JDBC code to insert data
+-----------------------------------
+package jdbc_examples;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.Statement;
+
+public class A {
+	public static void main(String[] args) {
+		try {
+//Connect to database - use psaDB (SQL)
+			
+Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/psadb1","root","test");
+
+//Write & execute SQl query
+Statement stmnt =  con.createStatement();
+stmnt.executeUpdate("insert into student values('adam','adam@gmail.com','9632629555')");
+			
+//Close database connection
+con.close();
+} catch (Exception e) {
+	e.printStackTrace();
+}
+}
+
+}
+ 
+Example 2: JDBC Code to delete a record
+---------------------------------------
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.Statement;
+
+public class B {
+	public static void main(String[] args) {
+		try {
+			//Connect to database - use psaDB (SQL)
+		Connection con = 
+					DriverManager.
+	getConnection("jdbc:mysql://localhost:3306/psadb1","root","test");
+					
+			//Write & execute SQl query
+			
+			Statement stmnt =  con.createStatement();
+			stmnt.executeUpdate("Delete from student where email='adam@gmail.com'");
+			
+			//Close database connection
+			con.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+}
+
+Example 3: JDBC Code to update Record
+-------------------------------------
+import java.sql.*;
+
+public class C {
+	public static void main(String[] args) {
+		try {
+			//Step Connect to Database
+			Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/psadb1", "root", "test");
+			
+			//Step 2: Execute SQl Query
+			Statement stmnt = con.createStatement();
+			stmnt.executeUpdate("Update student set mobile='9632882052' where email='mike@gmail.com'");
+			
+			//Step 3: Close Database Connection
+			con.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+}
+
+Example 4: JDBC Code to read data from database
+-----------------------------------------------
+package p1;
+
+import java.sql.*;
+
+public class D {
+	public static void main(String[] args) {
+		try {
+			//Step Connect to Database
+			Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/psadb1", "root", "test");
+			
+			//Step 2: Execute SQl Query
+			Statement stmnt = con.createStatement();
+			ResultSet result = stmnt.executeQuery("Select * from student");
+			
+			while(result.next()) {
+				System.out.println(result.getString(1));
+				System.out.println(result.getString(2));
+				System.out.println(result.getString(3));
+			}
+			
+			//Step 3: Close Database Connection
+			con.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+}
+
+
+
+
+
+
+
