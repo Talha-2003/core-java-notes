@@ -4995,7 +4995,151 @@ public class D {
 	}
 }
 
+Multi catch blocks:
+---------------------
 
+-> We can create multiple catch block.
+-> Always start with child exception class followed by parent exception class
+
+Example:
+---------
+package p1;
+
+public class E {
+	int x = 10;
+	public static void main(String[] args) {
+		try {
+			Integer.parseInt("ahsjkdhas687");
+			E a1 = null;
+			System.out.println(a1.x);
+			int x = 10/0;
+		}catch (ArithmeticException e) {
+			System.out.println(1);
+		}catch (NullPointerException e) {
+			System.out.println(2);
+		}catch (Exception e) {
+			System.out.println(3);
+		}
+		
+	}
+}
+
+finally block in java
+###########################
+
+-> this is extension of try catch block
+-> The code that we write in finally block will run 100%, regardless of exception
+
+
+Example:
+--------
+public class E {
+	int x = 10;
+	public static void main(String[] args) {
+		try {
+			int x = 100/0;
+		}catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			System.out.println("Finally");
+		}
+		
+	}
+}
+Output: Finally
+
+Example:
+--------
+public class E {
+	int x = 10;
+	public static void main(String[] args) {
+		try {
+			int x = 100/2;
+		}catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			System.out.println("Finally");
+		}
+		
+	}
+}
+Output: Finally
+
+Example: Can we write only try & catch block: yes
+--------
+public class E {
+	int x = 10;
+	public static void main(String[] args) {
+		try {
+			int x = 100/0;
+		}finally {
+			System.out.println("Finally");
+		}
+		
+		System.out.println("Welcome");
+		
+	}
+}
+Output:
+Finally
+Exception in thread "main" java.lang.ArithmeticException: / by zero
+	at jdbc_examples.E.main(E.java:7)
+
+
+Note: Can u give practical example where finally block can be used?
+Ans: 
+a. We can perform database closing operation
+b. We can peform file closing operation / Database closing Operation
+
+Example :
+package p1;
+
+import java.sql.*;
+
+public class A {
+	public static void main(String[] args) {
+		Connection con = null;
+		try {
+			//Step Connect to Database
+			con = DriverManager.getConnection("jdbc:mysql://localhost:3306/psadb1", "root", "test");
+			
+			//Step 2: Execute SQl Query
+			Statement stmnt = con.createStatement();
+			stmnt.executeUpdate("insert into student values('adam','adam@gmail.com','9632629455')");
+			
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			try {
+				//Step 3: Close Database Connection
+				con.close();
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
+		}
+	}
+}
+
+
+Interview Question:
+a. Difference between final versus finally versus finalize
+=============================================================
+final
+--------
+-> final makes variable contant
+-> final prevents overriding
+-> final on class stops inhertiance
+
+finally
+-------
+-> this is extension of try catch block
+-> The code that we write in finally block will run 100%, regardless of exception
+
+finalize():
+----------
+-> This is a method inside Object class and here Garbage collection logic is implemented
+-> We can try calling garbage collector using System.gc(). But will not guarantee 100% execution.
 
 
 
