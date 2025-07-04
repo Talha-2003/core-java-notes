@@ -5141,7 +5141,10 @@ finalize():
 -> This is a method inside Object class and here Garbage collection logic is implemented
 -> We can try calling garbage collector using System.gc(). But will not guarantee 100% execution.
 
-
+#####################
+Threads in java:
+##################
+https://www.youtube.com/watch?v=Uw1tocKJNZw&list=PLbLiFkJgsmq6j_fFlZuy0xIs6upvrML26&index=44
 
 
 
