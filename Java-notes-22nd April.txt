@@ -4865,7 +4865,7 @@ Installation Doc: https://www.prowesstics.com/blogs/mysql-workbench-installation
 
 -> Launch Mysqlworkbench
 -> Create psaDB connection
--> Crate Database: Create Database psaDB
+-> Create Database: Create Database psaDB
 -> Connect to Database: use psaDB
 -> Create Table Student: 
 Create table student(
