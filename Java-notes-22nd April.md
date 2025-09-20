@@ -1,11 +1,11 @@
-################################
-Core Java - Pankaj Sir Academy
-###############################
+
+Core Java -Talha
+--
 
 What is a class?
 -> Class helps us to create object in java
 -> In java we use class keyword to create class.
--> Keyword should be in lower case
+-> Keyword should be in lower case.
 Example :
 
 class A {
@@ -5150,4 +5150,5 @@ https://www.youtube.com/watch?v=Uw1tocKJNZw&list=PLbLiFkJgsmq6j_fFlZuy0xIs6upvrM
 Linux & Shell Scripting - Assignment
 ####################
 https://www.youtube.com/watch?v=UeZqMF05QLU&list=PLQVUMrcSsQIQoz-17VR1ag3VBdT672Nxl
+
 
