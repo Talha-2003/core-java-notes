@@ -36,27 +36,62 @@ public class Test {
 ## ⚡ Polymorphism = "Many Forms"
 
 ### 1. Static Polymorphism (Compile-time) = Method Overloading
+
 ```java
+=====================
+ Static Polymorphism (Compile-time) = Method Overloading
+=====================
+
 class Calculator {
     // Same method name, different parameters
+
     void add(int a, int b) {
         System.out.println("Sum: " + (a + b));
     }
-    
+
     void add(int a, int b, int c) {
         System.out.println("Sum: " + (a + b + c));
     }
+
+    public static void main(String[] args) {
+        Calculator c = new Calculator();  // Step 1: Object created
+
+        c.add(10, 20);                    // Step 2: Compiler selects add(int, int)
+        // Output: Sum: 30
+
+        c.add(10, 20, 30);                // Step 3: Compiler selects add(int, int, int)
+        // Output: Sum: 60
+    }
 }
-// DRY RUN (Calculator):  
-// 1. new Calculator() creates instance c  
-// 2. c.add(10, 20):  
-//    - compiler picks add(int,int)  
-//    - computes 10 + 20 = 30  
-//    - prints: sum from 1st method: 30  
-// 3. c.add(10, 20, 30):  
-//    - compiler picks add(int,int,int)  
-//    - computes 10 + 20 + 30 = 60  
-//    - prints: sum from 2nd method: 60 
+
+=====================
+ DRY RUN (Calculator):
+=====================
+
+ 1. new Calculator() creates instance c
+    - JVM allocates memory for object c
+    - Constructor is called (default constructor used here)
+
+ 2. c.add(10, 20):
+    - Compiler checks method signature: add(int, int)
+    - Matches with: void add(int a, int b)
+    - Executes: System.out.println("Sum: " + (10 + 20))
+    - Output: Sum: 30
+
+ 3. c.add(10, 20, 30):
+    - Compiler checks method signature: add(int, int, int)
+    - Matches with: void add(int a, int b, int c)
+    - Executes: System.out.println("Sum: " + (10 + 20 + 30))
+    - Output: Sum: 60
+
+=====================
+ Why it's called Compile-time Polymorphism:
+=====================
+ - Method selection is done by compiler based on method signature
+ - No decision is deferred to runtime
+ - Overloaded methods are resolved during compilation
+ - Hence, it's called static or compile-time polymorphism
+```
 ```
 **Decision made at compile time**
 
