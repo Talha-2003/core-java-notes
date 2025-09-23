@@ -91,12 +91,13 @@ class Calculator {
  - No decision is deferred to runtime
  - Overloaded methods are resolved during compilation
  - Hence, it's called static or compile-time polymorphism
-```
-```
 **Decision made at compile time**
+```
+```
+//=====================
+// Dynamic Polymorphism (Runtime) = Method Overriding
+//=====================
 
-### 2. Dynamic Polymorphism (Runtime) = Method Overriding
-```java
 class Bank {
     double getInterestRate() {
         return 5.0;  // Default rate
@@ -109,17 +110,54 @@ class SBI extends Bank {
         return 7.5;  // SBI's specific rate
     }
 }
-```
-**Decision made at runtime based on actual object type**
 
-## 🏦 Real Banking Example
+public class Test {
+    public static void main(String[] args) {
+        Bank b = new SBI();  // Step 1: Parent reference, Child object
+
+        double rate = b.getInterestRate();  // Step 2: Runtime decision
+        System.out.println("Rate of Interest: " + rate);  // Output: 7.5
+    }
+}
+
+=====================
+ DRY RUN (Test):
+=====================
+
+// 1. Bank b = new SBI();
+//    - Reference type: Bank
+//    - Object type: SBI
+//    - JVM allocates memory for SBI object
+//    - Parent reference holds child object
+
+// 2. b.getInterestRate();
+//    - Compiler checks Bank class: method exists ✅
+//    - At runtime, JVM checks actual object type: SBI
+//    - SBI overrides getInterestRate()
+//    - Executes SBI's version → returns 7.5
+
+// 3. Output:
+//    Rate of Interest: 7.5
+
+//=====================
+// Why it's called Runtime Polymorphism:
+//=====================
+// - Method selection is deferred until runtime
+// - Based on actual object type, not reference type
+// - Enables flexibility and dynamic behavior
+// - Common in frameworks, interfaces, and abstract classes
+
 ```java
+
+//=====================
+// Dynamic Polymorphism (Runtime) = Method Overriding
+//=====================
+
 class RBIBank {
     boolean checkEligibility() {
         return true;  // Basic check
     }
 
-    
     double getHomeLoanRate() {
         return 8.5;  // RBI's base rate
     }
@@ -130,7 +168,7 @@ class SBIBank extends RBIBank {
     double getHomeLoanRate() {
         return 9.5;  // SBI's actual rate
     }
-    
+
     String applyLoan() {
         if (checkEligibility()) {           // Uses parent's method
             double rate = getHomeLoanRate(); // Uses OVERRIDDEN method
@@ -140,53 +178,70 @@ class SBIBank extends RBIBank {
     }
 }
 
-OR
+//=====================
+// OR Example
+//=====================
 
-class RBIBank {  
-    boolean checkEligibility() {  
-        // docs verification logic  
-        return true;  
-    }  
+class RBIBank {
+    boolean checkEligibility() {
+        // docs verification logic
+        return true;
+    }
 
-    double getHomeLoanRoi() {  
-        return 10.85;  
-    }  
+    double getHomeLoanRoi() {
+        return 10.85;
+    }
 
-    double getPersonalLoanRoi() {  
-        return 11.65;  
-    }  
-}  
+    double getPersonalLoanRoi() {
+        return 11.65;
+    }
+}
 
-public class SBIBank extends RBIBank {  
-    @Override  
-    double getHomeLoanRoi() {             // override to provide SBI rate  
-        return 12.85;  
-    }  
+public class SBIBank extends RBIBank {
+    @Override
+    double getHomeLoanRoi() {
+        return 12.85;  // SBI's specific rate
+    }
 
-    String applyHomeLoan() {  
-        boolean status = checkEligibility();  // inherited method  
-        if (status) {  
-            double rate = getHomeLoanRoi();   // calls SBI override  
-            return "Your loan approved with ROI :: " + rate;  
-        } else {  
-            return "You are not eligible for home loan";  
-        }  
-    }  
+    String applyHomeLoan() {
+        boolean status = checkEligibility();  // inherited method
+        if (status) {
+            double rate = getHomeLoanRoi();   // overridden method
+            return "Your loan approved with ROI :: " + rate;
+        } else {
+            return "You are not eligible for home loan";
+        }
+    }
 
-    public static void main(String[] args) {  
-        SBIBank bank = new SBIBank();  
-        System.out.println(bank.applyHomeLoan());  
-    }  
-}  
+    public static void main(String[] args) {
+        SBIBank bank = new SBIBank();  // Step 1: Object created
+        System.out.println(bank.applyHomeLoan());  // Step 2: Method call
+    }
+}
 
-// DRY RUN (SBIBank):  
-// 1. new SBIBank() → instance of SBIBank  
-// 2. applyHomeLoan():  
-//    a. checkEligibility() → returns true  
-//    b. getHomeLoanRoi() → override returns 12.85  
-//    c. returns string "Your loan approved with ROI :: 12.85"  
-// 3. prints message  
+//=====================
+// DRY RUN (SBIBank):
+//=====================
 
+// 1. SBIBank bank = new SBIBank();
+//    - JVM creates object of SBIBank
+//    - Inherits methods from RBIBank
+
+// 2. bank.applyHomeLoan();
+//    a. checkEligibility() → inherited from RBIBank → returns true
+//    b. getHomeLoanRoi() → overridden in SBIBank → returns 12.85
+//    c. Message constructed: "Your loan approved with ROI :: 12.85"
+
+// 3. Output:
+//    Your loan approved with ROI :: 12.85
+
+//=====================
+// Why it's called Runtime Polymorphism:
+//=====================
+// - Method selection is deferred until runtime
+// - Based on actual object type (SBIBank), not reference type (RBIBank)
+// - JVM decides which version of method to execute
+// - Enables flexible and dynamic behavior in inheritance
 ```
 
 ## ⚠️ Important Concepts
